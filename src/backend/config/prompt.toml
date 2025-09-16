@@ -1,0 +1,181 @@
+[character_comprehension]
+pronunciation = """
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的发音讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+
+    ## 发音(Pronunciation)
+    ### 1.拼音与声调(Pinyin & Tone)
+    拼音为"[拼音]"，属于HSK [] 级核心音节，收录于《HSK []级标准内容》[]个音节表；声调为第[X]声（调值[XX]），发音时[具体发音描述，如：从高音向低音轻降/从低音向高音平稳上扬]，类似英语中[对应英语发音类比，如：表达感叹的"Ah!"/疑问语气的 "Really?"]但[差异补充，如：收尾更短促有力/更连贯持久]。
+
+    English: The pronunciation is "[拼音]", a core syllable of HSK Level [], included in the [] syllable list of "HSK Level [] Standard Content"; the tone is the [X]th tone (tone value [XX]), when pronouncing, [specific pronunciation description, e.g., gently falling from high to low/steadily rising from low to high], similar to English [corresponding English pronunciation comparison, e.g., exclamation "Ah!"/questioning tone "Really?"] but [difference supplement, e.g., with a shorter and stronger ending/more continuous and lasting].
+    [声调对比图]
+
+    ### 2.中英发音对比(Chinese-English Pronunciation Comparison)
+    相似点是[发音相似点，如：起始口型接近英语"[英文单词]"，均以[音素类型]为基础/辅音部分均为[辅音]，发音方式一致]；差异点在于中文"[拼音]"是[发音类型，如：纯单元音/辅音+单元音]，[中文发音细节，如：发音过程口型不变]，英语"[类比英文单词]"是[英语发音类型，如：双元音/辅音+短元音+辅音]，[英语发音细节，如：口型从[音素1]向[音素2]滑动]；且中文第[X]声有[声调特点，如：明确降调/升调轨迹]，英语"[类比英文单词]"在[句式类型，如：陈述句/疑问句]中多为[英语语调，如：平调/略升调]。
+
+    English: The similarities are [pronunciation similarities, e.g., the initial mouth shape is close to the English "[English word]", both based on [phoneme type]/the consonant parts are both [consonant], with the same pronunciation method]; the differences are that Chinese "[拼音]" is [pronunciation type, e.g., pure monophthong/consonant + monophthong], [Chinese pronunciation detail, e.g., the mouth shape remains unchanged during pronunciation], while English "[comparable English word]" is [English pronunciation type, e.g., diphthong/consonant + short vowel + consonant], [English pronunciation detail, e.g., the mouth shape slides from [phoneme 1] to [phoneme 2]]; moreover, the Chinese [X]th tone has [tone feature, e.g., clear falling tone/rising tone trajectory], while English "[comparable English word]" in [sentence type, e.g., declarative sentence/interrogative sentence] mostly has [English intonation, e.g., flat tone/slightly rising tone].
+
+    ### 3.多模态资源(Multimodal Resources)
+"""
+writing_style = """
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的写法讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+    ## 写法(Stroke Order)
+    ### 1.基础信息(Basic Info)
+    中文：总笔画为[X]画，符合《HSK 1级教材》汉字书写要求；结构类型为[结构类型，如：独体字/上下结构/左右结构]；部首为"[部首]"（[部首拼音]，[部首名称]，收录于《HSK 1级教材》偏旁总表）。
+
+    English：It has a total of [X] strokes, meeting the writing requirements of HSK Level 1 Textbooks; it has a [structure type, e.g., single-component structure/top-bottom structure/left-right structure]; its radical is "[部首]" ([radical pinyin], "[radical name]", included in the radical list of HSK Level 1 Textbooks).
+
+    ### 2.多模态笔顺演示(Multimodal Stroke Order Demo)
+
+    象形文字演变图(Etymology Evolution Chart)：\n
+
+    | 字体(Font) | 字形(Character Form) | 含义解析(Meaning Analysis) | 英文对照(English Explanation) |
+    |--------------|------------------------|------------------------------|--------------------------------|
+    | 甲骨文(Oracle Bone) | [甲骨文字形描述/"(缺)"] | [甲骨文含义解析，如：像[事物形态]，表[原始含义]] | [English explanation for oracle bone form, e.g., Resembles [shape of thing], representing [original meaning]] |
+    | 金文(Bronze) | [金文字形描述] | [金文含义解析，如：线条简化/结构调整，保留[核心含义]] | [English explanation for bronze form, e.g., Simplified lines/adjusted structure, retaining [core meaning]] |
+    | 小篆(Small Seal) | [小篆字形描述] | [小篆含义解析，如：字形规整，确立[基本结构]，规范[含义]] | [English explanation for small seal form, e.g., Regular shape, establishing [basic structure], standardizing [meaning]] |
+    | 简化字(Simplified) | [当前汉字] | [简化字含义解析，如：延续[前代结构]，笔画简化，便于书写] | [English explanation for simplified form, e.g., Follows [previous structure], with simplified strokes for easy writing] |
+
+    中文：提供可点击播放的动态笔顺动画（从"[首笔名称/部首]"开始，依次为"[第二笔]→[第三笔]→……→[末笔]"的分步书写过程），标注每笔名称（如"[笔画符号] = [笔画名称] = [拼音], [English stroke name]"）；系统实时识别书写轨迹，提醒易错点（如[具体易错点，如：易将第X笔写为[错误笔画]，正确为[正确笔画]/易将[某部分]写得[错误形态]，正确应为[正确形态]]）。
+
+    English：A click-to-play animated stroke order is available (showing the step-by-step writing process starting from "[first stroke name/radical]" and followed by "[second stroke] → [third stroke] → … → [last stroke]"), with each stroke name labeled (e.g., "[stroke symbol] = [stroke name] = [pinyin], [English stroke name]"); the system can real-time identify the writing trajectory and remind of common mistakes (e.g., [specific mistake, e.g., easily writing the Xth stroke as [wrong stroke], while the correct one is [correct stroke]/easily writing [a part] as [wrong form], while the correct form is [correct form]]).
+
+    ### 3.记忆口诀(Memory Mnemonic - Bilingual)
+    中文：[中文记忆口诀，如：先写[首笔特征]像[类比事物1]，再写[后续笔画特征]像[类比事物2]，[结构关联]就是"[当前汉字]"]。
+
+    English：[English memory mnemonic, e.g., First [first stroke feature] like [analogous thing 1], then [subsequent stroke feature] like [analogous thing 2], [structure connection] is "[当前汉字]" ([拼音])].
+"""
+culture_tips = """
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的文化小贴士内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+    **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+    ## 文化小贴士(Cultural Tips)
+    ### 1.汉字结构的文化内涵(Cultural Meaning of Character Structure)
+    中文："[当前汉字]"[结构拆解，如：作为独体字/由"[部件1]"和"[部件2]"组成]，[部件含义解析，如：甲骨文字形像"[事物形态]"，最初表"[原始含义]"/"[部件1]"象征"XX"，"[部件2]"表"XX"，组合体现"XX"]；在中华文化中，"[当前汉字]"[文化含义，如：因XX特点被视为XX/常用于XX场景，体现XX文化观念]，但日常交流中仍以[基础含义，如：表数量/颜色/称谓]为主。
+
+    English："[当前汉字]" [structure disassembly, e.g., as a single-component character/composed of "[component 1]" and "[component 2]"], [component meaning analysis, e.g., the oracle bone form resembles "[shape of thing]", initially representing "[original meaning]"/"[component 1]" symbolizes "XX", and "[component 2]" means "XX", the combination reflects "XX"]; in Chinese culture, "[当前汉字]" [cultural meaning, e.g., is regarded as XX due to XX feature/mostly used in XX scenarios, reflecting XX cultural concept], but it still mainly [basic meaning, e.g., represents quantity/color/address] in daily communication.
+
+    ### 2.中英"[当前汉字]"的表达差异(Expression Difference Between Chinese & English)
+
+    | 维度(Dimension) | 中文(Chinese) | 英文(English) | 示例(Example) |
+    |-----------------|--------------|--------------|---------------|
+    | [维度1，如：数量/颜色/称谓表达] | [中文表达特点，如："[当前汉字]"+量词+名词/可重叠表XX] | [英文表达特点，如："[英文对应词]"+名词/需加XX词表XX] | 中文：[中文示例]；英文：[英文示例] |
+    | [维度2，如：使用场景/情感色彩] | [中文表达特点，如：可用于XX场景，无XX情感/有XX联想] | [英文表达特点，如：用于XX场景，有XX情感/无XX联想] | 中文：[中文示例]；英文：[英文示例] |
+
+    ### 3.多模态文化资源(Multimodal Cultural Resources)
+    中文：观看"中国人对'[当前汉字]'的使用"短视频（如：[具体场景1，如：节日中XX/日常交流中XX]），对比英国"[英文对应词]"的使用场景（如：[具体场景2，如：XX活动中XX/日常对话中XX]）；展示"[中国文化图片场景，如：中国XX场景中的'[当前汉字]'元素]"与"[英国文化图片场景，如：英国XX场景中的'[英文对应词]'元素]"图片，引导讨论文化差异。
+
+    English：Watch a short video titled "Chinese People's Use of '[当前汉字]'" (e.g., [specific scenario 1, e.g., XX in festivals/XX in daily communication]), and compare it with scenarios where "[English equivalent]" is used in the UK (e.g., [specific scenario 2, e.g., XX in XX activities/XX in daily conversations]); display pictures of "[Chinese cultural picture scenario, e.g., element of '[当前汉字]' in Chinese XX scenario]" and "[British cultural picture scenario, e.g., element of '[English equivalent]' in British XX scenario]" to guide discussions on cultural differences.
+"""
+idioms = """
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的经典成语与小故事内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+    **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+    ## 经典成语与小故事(Classic Idioms & Short Stories)
+    ### 1.[成语1]（[成语拼音1]）
+    中文：拼音为"[成语拼音1]"，英文翻译为"[成语英文翻译1]"；含义是"[中文成语含义，如：指XX，形容XX，'[当前汉字]'表XX含义]"；小故事：[贴合HSK 1教材话题的小故事，如：XX（人物）在XX（场景）做XX事（关联教材第X课"XX"话题），这就是"[成语1]"]。
+
+    English：Pinyin is "[idiom pinyin 1]", English translation is "[English idiom translation 1]"; Meaning: "[English idiom meaning, e.g., Refers to XX, describes XX, with '[当前汉字]' representing XX meaning]"; Short Story: [Short story matching HSK 1 textbook topic, e.g., XX (character) did XX (action) in XX (scenario) (related to HSK Level 1 Textbook Lesson X "XX" topic)—this is "[成语1]" ([English idiom translation 1])].
+
+    ### 2.[成语2]（[成语拼音2]）
+    中文：拼音为"[成语拼音2]"，英文翻译为"[成语英文翻译2]"；含义是"[中文成语含义，如：比喻XX，'[当前汉字]'表XX属性]"；小故事：[贴合HSK 1教材话题的小故事，如：XX（人物）遇到XX（情况）（关联教材第X课"XX"话题），大家说这是"[成语2]"]。
+
+    English：Pinyin is "[idiom pinyin 2]", English translation is "[English idiom translation 2]"; Meaning: "[English idiom meaning, e.g., Metaphorically refers to XX, with '[当前汉字]' representing XX attribute]"; Short Story: [Short story matching HSK 1 textbook topic, e.g., XX (character) encountered XX (situation) (related to HSK Level 1 Textbook Lesson X "XX" topic)—everyone said this is "[成语2]" ([English idiom translation 2])].
+"""
+meaning = """
+你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的意思与常用搭配讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+    **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+    ## 意思与常用搭配(Meaning & Common Collocations)
+    ### 1.核心含义(Core Meaning - HSK 1 Level)
+    中文：基础义为[核心含义，如：数字X/表示XX（颜色/动作/称谓）/表达XX（情感/状态）]（类似英语"[英文对应词1]""[英文对应词2]"，[语义差异补充，如：但"[当前汉字]"更强调XX/仅用于XX场景]，《HSK一级标准内容》词汇表释义）；中英语义对比中，"[中文搭配1]"[中文语义细节，如：涵盖XX含义/表XX属性]，比英语"[英文搭配1]"[语义差异，如：更强调XX/范围更广]；"[中文搭配2]"[中文语义细节，如：程度强于XX/表XX习惯]，接近英语"[英文搭配2]"。
+
+    English：The basic meaning is [core meaning, e.g., number X/representing XX (color/action/address)/expressing XX (emotion/state)] (similar to English "[English equivalent 1]" "[English equivalent 2]", [semantic difference supplement, e.g., but "[当前汉字]" emphasizes XX more/only used in XX scenarios], as defined in the vocabulary list of HSK Level 1 Standard Content); in the Chinese-English semantic comparison, "[Chinese collocation 1]" [Chinese semantic detail, e.g., implies XX meaning/represents XX attribute], emphasizing XX more/covering a wider range than English "[English collocation 1]"; "[Chinese collocation 2]" [Chinese semantic detail, e.g., stronger than XX/indicating XX habit], close to English "[English collocation 2]".
+
+    ### 2.HSK 1级核心词组(HSK Level 1 Core Phrases)
+
+    | 词组(Phrase) | 拼音(Pinyin) | 英文翻译(English Translation) | 教材来源(Textbook Source) |
+    |--------------|--------------|------------------------------|----------------------------|
+    | [当前汉字] | [拼音] | [英文翻译1] | 《HSK 1级教材》第[X]课"[课文主题]" |
+    | [词组1] | [词组拼音1] | [英文翻译2] | 《HSK 1级教材》第[X]课"[课文主题]" |
+    | [词组2] | [词组拼音2] | [英文翻译3] | 《HSK 1级教材》第[X]课"[课文主题]" |
+    | [词组3] | [词组拼音3] | [英文翻译4] | 《HSK一级标准内容》词汇表No.[X] |
+
+    ### 3.常用例句(Common Sentences - HSK 1 Exam-Oriented)
+    (1)教材与考试例句(Textbook & Exam Sentences)
+
+    | 中文例句(Chinese Sentence) | 拼音(Pinyin) | 英文翻译(English Translation) | 语法点(Grammar Point) |
+    |----------------------------|--------------|------------------------------|----------------------|
+    | [例句1] | [例句拼音1] | [英文翻译1] | [语法点1，如："是"字句表XX/"有"字句+数词] |
+    | [例句2] | [例句拼音2] | [英文翻译2] | [语法点2，如：主语+[当前汉字]+宾语/第三人称+XX] |
+    | [例句3] | [例句拼音3] | [英文翻译3] | [语法点3，如："的"字结构/HSK 1语法点【一XX】] |
+
+    (2)英国场景补充例句(UK-Scenario Sentences)
+
+    | 中文例句(Chinese Sentence) | 拼音(Pinyin) | 英文翻译(English Translation) | 场景说明(Scenario Explanation) |
+    |----------------------------|--------------|------------------------------|-------------------------------|
+    | [英国场景例句1] | [例句拼音4] | [英文翻译4] | [场景关联，如：贴合英国日常饮食/交通/景点习惯] |
+    | [英国场景例句2] | [例句拼音5] | [英文翻译5] | [场景关联，如：结合英国气候/节日/文化特点] |
+    | [英国场景例句3] | [例句拼音6] | [英文翻译6] | [场景关联，如：关联英国流行体育/娱乐项目] |
+
+    ### 4.句型公式(Sentence Pattern Formula)
+    中文：基础公式1为"[句型结构1，如：主语（S.）+有+[当前汉字]+量词+名词（N.）]"，例：[例句示范1]；基础公式2为"[句型结构2，如：时间/地点+是+[当前汉字]+XX]"，例：[例句示范2]；差异提示：中文"[当前汉字]"[中文用法细节，如：后必须加量词/可直接加名词]，英语"[英文对应词]"[英语用法细节，如：后直接接可数名词/需加所有格]，[具体差异示例，如："[中文搭配]"="[英文搭配]"，不可说"[错误英文表达]"]。
+
+    English：Basic Formula 1: [Sentence structure 1, e.g., Subject (S.) + 有 (have) + [当前汉字] + measure word + Noun (N.)], e.g., [Example 1]; Basic Formula 2: [Sentence structure 2, e.g., Time/Place + 是 (is) + [当前汉字] + XX], e.g., [Example 2]; Difference Note: In Chinese, "[当前汉字]" [Chinese usage detail, e.g., must be followed by a measure word/can be directly followed by a noun], while in English "[English equivalent]" [English usage detail, e.g., is directly followed by a countable noun/requires a possessive case], [specific difference example, e.g., "[Chinese collocation]" = "[English collocation]", not "[wrong English expression]"].
+"""
+practice = """
+        你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的小练习内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+        **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+        ## 小练习(Practice)
+        ### 1.书写练习(Writing Practice)
+        中文：任务为跟着动态笔顺写1遍"[当前汉字]"，重点注意[书写重点，如：第X笔的XX（角度/长度/位置）/某部分的结构比例]；智能点评：系统自动检测笔画顺序和结构比例，提示"[具体点评内容，如：XX部分占X/X，XX部分占X/X，避免XX问题（头重脚轻/比例失衡）]"。
+
+        English：Task: Write "[当前汉字]" once following the animated stroke order, focusing on [writing focus, e.g., the XX (angle/length/position) of the Xth stroke/the structure ratio of a part]; AI Feedback: The system automatically detects the stroke order and structure ratio, prompting "[specific feedback content, e.g., XX part accounts for X/X, XX part accounts for X/X—avoid XX problem (top-heavy/imbalanced ratio)]".
+
+        ### 2.造句练习(Sentence-Making Practice)
+        中文：任务为用"[当前汉字]"造1个英国场景的句子；示例：[示例句子]（[示例拼音]/[示例英文翻译]）；HSK 1题库匹配：题目来自HSK 1级书面表达真题类型（如"根据图片造句""补充句子"）；自动鼓励语（双语）：中文"你的句子完全符合HSK 1语法规范，还结合了英国XX（场景/文化/习惯），非常棒！"；英文"Your sentence fully follows HSK Level 1 grammar rules and connects to British XX (scenario/culture/habit)—excellent work!"
+
+        English：Task: Create a UK-scenario sentence using "[当前汉字]"; Example: [Example sentence] ([Example pinyin]/[Example English translation]); HSK 1 Alignment: The question is from HSK Level 1 written expression question types (e.g., "sentence-making based on pictures", "sentence completion"); AI Encouragement (Bilingual): Chinese "你的句子完全符合HSK 1语法规范，还结合了英国XX（场景/文化/习惯），非常棒！"; English "Your sentence fully follows HSK Level 1 grammar rules and connects to British XX (scenario/culture/habit)—excellent work!"。
+"""
+stroke_order = """
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的写法讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+
+    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+
+    ## 写法(Stroke Order)
+    ### 1.基础信息(Basic Info)
+    中文：总笔画为[X]画，符合《HSK 1级教材》汉字书写要求；结构类型为[结构类型，如：独体字/上下结构/左右结构]；部首为"[部首]"（[部首拼音]，[部首名称]，收录于《HSK 1级教材》偏旁总表）。
+
+    English：It has a total of [X] strokes, meeting the writing requirements of HSK Level 1 Textbooks; it has a [structure type, e.g., single-component structure/top-bottom structure/left-right structure]; its radical is "[部首]" ([radical pinyin], "[radical name]", included in the radical list of HSK Level 1 Textbooks).
+
+    ### 2.多模态笔顺演示(Multimodal Stroke Order Demo)
+
+    象形文字演变图(Etymology Evolution Chart)：\n
+
+    | 字体(Font) | 字形(Character Form) | 含义解析(Meaning Analysis) | 英文对照(English Explanation) |
+    |--------------|------------------------|------------------------------|--------------------------------|
+    | 甲骨文(Oracle Bone) | [甲骨文字形描述/"(缺)"] | [甲骨文含义解析，如：像[事物形态]，表[原始含义]] | [English explanation for oracle bone form, e.g., Resembles [shape of thing], representing [original meaning]] |
+    | 金文(Bronze) | [金文字形描述] | [金文含义解析，如：线条简化/结构调整，保留[核心含义]] | [English explanation for bronze form, e.g., Simplified lines/adjusted structure, retaining [core meaning]] |
+    | 小篆(Small Seal) | [小篆字形描述] | [小篆含义解析，如：字形规整，确立[基本结构]，规范[含义]] | [English explanation for small seal form, e.g., Regular shape, establishing [basic structure], standardizing [meaning]] |
+    | 简化字(Simplified) | [当前汉字] | [简化字含义解析，如：延续[前代结构]，笔画简化，便于书写] | [English explanation for simplified form, e.g., Follows [previous structure], with simplified strokes for easy writing] |
+
+    中文：提供可点击播放的动态笔顺动画（从"[首笔名称/部首]"开始，依次为"[第二笔]→[第三笔]→……→[末笔]"的分步书写过程），标注每笔名称（如"[笔画符号] = [笔画名称] = [拼音], [English stroke name]"）；系统实时识别书写轨迹，提醒易错点（如[具体易错点，如：易将第X笔写为[错误笔画]，正确为[正确笔画]/易将[某部分]写得[错误形态]，正确应为[正确形态]]）。
+
+    English：A click-to-play animated stroke order is available (showing the step-by-step writing process starting from "[first stroke name/radical]" and followed by "[second stroke] → [third stroke] → … → [last stroke]"), with each stroke name labeled (e.g., "[stroke symbol] = [stroke name] = [pinyin], [English stroke name]"); the system can real-time identify the writing trajectory and remind of common mistakes (e.g., [specific mistake, e.g., easily writing the Xth stroke as [wrong stroke], while the correct one is [correct stroke]/easily writing [a part] as [wrong form], while the correct form is [correct form]]).
+
+    ### 3.记忆口诀(Memory Mnemonic - Bilingual)
+    中文：[中文记忆口诀，如：先写[首笔特征]像[类比事物1]，再写[后续笔画特征]像[类比事物2]，[结构关联]就是"[当前汉字]"]。
+
+    English：[English memory mnemonic, e.g., First [first stroke feature] like [analogous thing 1], then [subsequent stroke feature] like [analogous thing 2], [structure connection] is "[当前汉字]" ([拼音])].
+"""
+

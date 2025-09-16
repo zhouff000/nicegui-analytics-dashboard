@@ -1,5 +1,4 @@
 import gradio as gr
-from src.web.pages.char_comprehend import char_comprehend_page
 
 with open("src/web/static/html/header.html", "r") as header_file:
     header = header_file.read()
