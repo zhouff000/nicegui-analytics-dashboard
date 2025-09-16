@@ -5,14 +5,18 @@ with open("src/web/static/html/header.html", "r") as header_file:
     header = header_file.read()
 
 
-def switch_page(gradio_page):
-    gradio_page.update(visible=True)
+history = [
+    {"role": "assistant", "content": "I am happy to provide you that report and plot.","path":"documents/report.pdf"},
+    {"role": "user", "content": "Please provide a report and plot for the data I am uploading."},
+]
 
 
 with gr.Blocks(
     theme=gr.themes.Soft(),
 ) as demo:
     gr.HTML(header)
+
+    gr.Chatbot(history, type="messages")
 
     with gr.Sidebar(label="功能切换", position="left"):
         with gr.Column():
@@ -25,31 +29,5 @@ with gr.Blocks(
                 size="lg",
                 variant="secondary",
             )
-            gr.Button(
-                icon="src/web/static/icon/patterns_character_icon_215652.ico",
-                value="词汇理解",
-                size="lg",
-                variant="secondary",
-            )
-            gr.Button(
-                icon="src/web/static/icon/patterns_character_icon_215652.ico",
-                value="语法学习",
-                size="lg",
-                variant="secondary",
-            )
-            gr.Button(
-                icon="src/web/static/icon/patterns_character_icon_215652.ico",
-                value="句子纠错",
-                size="lg",
-                variant="secondary",
-            )
-            gr.Button(
-                icon="src/web/static/icon/patterns_character_icon_215652.ico",
-                value="汉语对话",
-                size="lg",
-                variant="secondary",
-            )
-        char = char_comprehend_page()
-        page.click(fn=switch_page, inputs=char, outputs=char)
 
 demo.launch()

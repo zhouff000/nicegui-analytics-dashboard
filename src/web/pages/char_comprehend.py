@@ -2,7 +2,7 @@ import gradio as gr
 
 
 def char_comprehend_page():
-    with gr.Blocks(visiable=False) as page:
+    with gr.Blocks() as page:
         gr.Markdown("### 汉字解析页面")
         gr.Textbox(label="输入汉字")
         gr.Button("解析")
