@@ -1,8 +1,8 @@
 [character_comprehension]
 pronunciation = """
-    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的发音讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的发音讲解内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
 
     ## 发音(Pronunciation)
@@ -20,9 +20,9 @@ pronunciation = """
     ### 3.多模态资源(Multimodal Resources)
 """
 writing_style = """
-    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的写法讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的写法讲解内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
     ## 写法(Stroke Order)
     ### 1.基础信息(Basic Info)
@@ -51,9 +51,9 @@ writing_style = """
     English：[English memory mnemonic, e.g., First [first stroke feature] like [analogous thing 1], then [subsequent stroke feature] like [analogous thing 2], [structure connection] is "[当前汉字]" ([拼音])].
 """
 culture_tips = """
-    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的文化小贴士内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的文化小贴士内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-    **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+    **请严格按照下列模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
     ## 文化小贴士(Cultural Tips)
     ### 1.汉字结构的文化内涵(Cultural Meaning of Character Structure)
@@ -74,9 +74,9 @@ culture_tips = """
     English：Watch a short video titled "Chinese People's Use of '[当前汉字]'" (e.g., [specific scenario 1, e.g., XX in festivals/XX in daily communication]), and compare it with scenarios where "[English equivalent]" is used in the UK (e.g., [specific scenario 2, e.g., XX in XX activities/XX in daily conversations]); display pictures of "[Chinese cultural picture scenario, e.g., element of '[当前汉字]' in Chinese XX scenario]" and "[British cultural picture scenario, e.g., element of '[English equivalent]' in British XX scenario]" to guide discussions on cultural differences.
 """
 idioms = """
-    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的经典成语与小故事内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的经典成语与小故事内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-    **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+    **请严格按照下列模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
     ## 经典成语与小故事(Classic Idioms & Short Stories)
     ### 1.[成语1]（[成语拼音1]）
@@ -90,9 +90,9 @@ idioms = """
     English：Pinyin is "[idiom pinyin 2]", English translation is "[English idiom translation 2]"; Meaning: "[English idiom meaning, e.g., Metaphorically refers to XX, with '[当前汉字]' representing XX attribute]"; Short Story: [Short story matching HSK 1 textbook topic, e.g., XX (character) encountered XX (situation) (related to HSK Level 1 Textbook Lesson X "XX" topic)—everyone said this is "[成语2]" ([English idiom translation 2])].
 """
 meaning = """
-你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的意思与常用搭配讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的意思与常用搭配讲解内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-    **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+    **请严格按照下列模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
     ## 意思与常用搭配(Meaning & Common Collocations)
     ### 1.核心含义(Core Meaning - HSK 1 Level)
@@ -132,9 +132,9 @@ meaning = """
     English：Basic Formula 1: [Sentence structure 1, e.g., Subject (S.) + 有 (have) + [当前汉字] + measure word + Noun (N.)], e.g., [Example 1]; Basic Formula 2: [Sentence structure 2, e.g., Time/Place + 是 (is) + [当前汉字] + XX], e.g., [Example 2]; Difference Note: In Chinese, "[当前汉字]" [Chinese usage detail, e.g., must be followed by a measure word/can be directly followed by a noun], while in English "[English equivalent]" [English usage detail, e.g., is directly followed by a countable noun/requires a possessive case], [specific difference example, e.g., "[Chinese collocation]" = "[English collocation]", not "[wrong English expression]"].
 """
 practice = """
-        你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的小练习内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+        你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的小练习内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-        **请严格按照下列模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+        **请严格按照下列模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
         ## 小练习(Practice)
         ### 1.书写练习(Writing Practice)
@@ -148,9 +148,9 @@ practice = """
         English：Task: Create a UK-scenario sentence using "[当前汉字]"; Example: [Example sentence] ([Example pinyin]/[Example English translation]); HSK 1 Alignment: The question is from HSK Level 1 written expression question types (e.g., "sentence-making based on pictures", "sentence completion"); AI Encouragement (Bilingual): Chinese "你的句子完全符合HSK 1语法规范，还结合了英国XX（场景/文化/习惯），非常棒！"; English "Your sentence fully follows HSK Level 1 grammar rules and connects to British XX (scenario/culture/habit)—excellent work!"。
 """
 stroke_order = """
-    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{query}"的写法讲解内容。所有内容必须与"{query}"直接相关，且每一部分都要完整覆盖。不要生成与"{query}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
+    你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的写法讲解内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
-    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{query}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
+    **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
 
     ## 写法(Stroke Order)
     ### 1.基础信息(Basic Info)
