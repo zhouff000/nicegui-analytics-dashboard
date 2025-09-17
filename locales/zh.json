@@ -1,0 +1,33 @@
+{
+    "language_prompt": "请选择语言",
+    "name_prompt": "你叫什么名字？",
+    "greeting": "你好, {name}！欢迎你。",
+    "goodbye": "再见！",
+    "invalid_language": "无效的选择，请重试。",
+    "ok": "确定",
+    "cancel": "取消",
+    "error": "发生错误。",
+    "success": "成功。",
+    "loading": "加载中...",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "new": "新建",
+    "login": {
+        "username_prompt": "请输入用户名",
+        "password_prompt": "请输入密码",
+        "login_button": "登录"
+    },
+    "home": {
+        "welcome_message": "欢迎来到主页",
+        "choose_function": "选择功能"
+    },
+    "sidebar": {
+        "choose_function": "选择功能",
+        "character_resolution": "汉字解析",
+        "vocabulary_comprehension": "词汇理解",
+        "pronunciation": " 发音",
+        "grammar_learning": "语法学习",
+        "function_switch": "功能切换"
+    }
+}

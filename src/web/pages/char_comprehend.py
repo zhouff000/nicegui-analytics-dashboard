@@ -1,11 +1,25 @@
-import gradio as gr
+from gradio import (
+    Column,
+    ChatInterface,
+    Chatbot,
+    Textbox,
+)
+from utils.i18n_utils import I18N
 
 
-def char_comprehend_page():
-    with gr.Blocks() as page:
-        gr.Markdown("### 汉字解析页面")
-        gr.Textbox(label="输入汉字")
-        gr.Button("解析")
+def slow_echo(message: str, history: list):
+    return f"You said: {message} " * 10
+
+
+def char_comprehend_page(i18n: I18N = I18N("locales", "en")):
+    with Column() as page:
+        ChatInterface(
+            fn=slow_echo,
+            title=None,
+            chatbot=Chatbot(height=600, type="messages"),  # 可以自定义聊天框的高度
+            textbox=Textbox(placeholder="问我任何问题...", container=False, scale=7),
+            type="messages",
+        )
     return page
 
 

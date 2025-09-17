@@ -1,7 +1,0 @@
-{
-    "language_prompt": "请选择语言",
-    "name_prompt": "你叫什么名字？",
-    "greeting": "你好, {name}！欢迎你。",
-    "goodbye": "再见！",
-    "invalid_language": "无效的选择，请重试。"
-}
