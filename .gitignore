@@ -10,3 +10,6 @@ wheels/
 .venv
 
 playground/
+
+# environment files
+.env
