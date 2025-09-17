@@ -7,7 +7,7 @@ dotenv.load_dotenv("./.env")
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-def prompt_template(character, scenario):
+def _prompt_template(character, scenario):
     with open("src/backend/config/prompt.toml", "rb") as f:
         config = tomllib.load(f)["character_comprehension"]
 
@@ -16,5 +16,5 @@ def prompt_template(character, scenario):
 
 
 if __name__ == "__main__":
-    print(prompt_template("林", "pronunciation"))
+    print(_prompt_template("林", "pronunciation"))
     ...
