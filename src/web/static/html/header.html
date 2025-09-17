@@ -3,7 +3,43 @@
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <style>
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(45deg, #007bff 0%, #0056b3 100%);;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 24px;
+            gap: 24px;
+            border-radius: 8px;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .main-title {
+            font-size: 54px;
+            color: #fafafa;
+            margin: 0;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
         .link-block {
+            display: inline-block;
             border: 1px solid transparent;
             border-radius: 24px;
             background-color: rgba(54, 54, 54, 1);
@@ -12,7 +48,10 @@
 
         .link-block:hover {
             background-color: rgba(54, 54, 54, 0.75) !important;
-            cursor: pointer !important;
+        }
+
+        .link-block+.link-block {
+            margin-left: 20px;
         }
 
         .external-link {
@@ -21,11 +60,11 @@
             height: 36px;
             line-height: 36px;
             padding: 0 16px;
-            cursor: pointer !important;
         }
 
         .external-link,
-        .external-link:hover {
+        .external-link:hover,
+        .link-block:hover {
             cursor: pointer !important;
         }
 
@@ -36,59 +75,15 @@
 </head>
 
 <body>
-    <div style="
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(45deg, #007bff 0%, #0056b3 100%);
-      padding: 24px;
-      gap: 24px;
-      border-radius: 8px;
-    ">
-        <div style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-      ">
-            <div style="display: flex; flex-direction: column; gap: 8px">
-                <h1 style="
-            font-size: 48px;
-            color: #fafafa;
-            margin: 0;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
-              'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-          ">
+    <div class="header-container">
+        <div class="header-content">
+            <div class="title-container">
+                <h1 class="main-title">
                     重庆师范大学：对外汉语言大模型
                 </h1>
             </div>
         </div>
-
-        <p style="
-        margin: 0;
-        line-height: 1.6rem;
-        font-size: 16px;
-        color: #fafafa;
-        opacity: 0.8;
-      ">
-            A one-stop, open-source, high-quality data extraction tool that supports converting PDF to Markdown and
-            JSON.<br>
-        </p>
-        <style>
-            .link-block {
-                display: inline-block;
-            }
-
-            .link-block+.link-block {
-                margin-left: 20px;
-            }
-        </style>
-
     </div>
-
-
 </body>
 
 </html>

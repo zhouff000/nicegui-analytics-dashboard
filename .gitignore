@@ -13,3 +13,6 @@ playground/
 
 # environment files
 .env
+
+# OSX files
+.DS_Store
