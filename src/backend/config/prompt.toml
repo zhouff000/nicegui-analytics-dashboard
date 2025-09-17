@@ -50,7 +50,7 @@ writing_style = """
 
     English：[English memory mnemonic, e.g., First [first stroke feature] like [analogous thing 1], then [subsequent stroke feature] like [analogous thing 2], [structure connection] is "[当前汉字]" ([拼音])].
 """
-culture_tips = """
+culture = """
     你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的文化小贴士内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
     **请严格按照下列模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行
@@ -147,7 +147,7 @@ practice = """
 
         English：Task: Create a UK-scenario sentence using "[当前汉字]"; Example: [Example sentence] ([Example pinyin]/[Example English translation]); HSK 1 Alignment: The question is from HSK Level 1 written expression question types (e.g., "sentence-making based on pictures", "sentence completion"); AI Encouragement (Bilingual): Chinese "你的句子完全符合HSK 1语法规范，还结合了英国XX（场景/文化/习惯），非常棒！"; English "Your sentence fully follows HSK Level 1 grammar rules and connects to British XX (scenario/culture/habit)—excellent work!"。
 """
-stroke_order = """
+stroke = """
     你是一位专业的对外汉语教师，请严格按照以下模板（中英双语）输出关于"{character}"的写法讲解内容。所有内容必须与"{character}"直接相关，且每一部分都要完整覆盖。不要生成与"{character}"无关的内容。请严格遵循分节、分点、表格、标题、双语等格式要求，内容详实、地道、贴合HSK 1级教学和英国场景。模板如下：
 
     **请严格按照下列的markdown格式的模板输出**，所有[]内容请用"{character}"相关信息补全，所有英文部分也要补全，不要遗漏任何一节。请你严格按照下面的模板生成信息，并且每个标题后进行换行

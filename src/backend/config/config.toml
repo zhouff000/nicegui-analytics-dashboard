@@ -1,0 +1,13 @@
+[character_comprehension]
+[character_comprehension.pronunciation]
+openai_model = "Qwen/Qwen3-14B"
+[character_comprehension.writing_style]
+openai_model = "Qwen/Qwen3-14B"
+[character_comprehension.culture]
+openai_model = "Qwen/Qwen3-14B"
+[character_comprehension.meaning]
+openai_model = "Qwen/Qwen3-14B"
+[character_comprehension.practice]
+openai_model = "Qwen/Qwen3-14B"
+[character_comprehension.stroke]
+openai_model = "Qwen/Qwen3-14B"
