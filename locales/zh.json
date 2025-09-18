@@ -28,6 +28,8 @@
         "vocabulary_comprehension": "词汇理解",
         "pronunciation": " 发音",
         "grammar_learning": "语法学习",
+        "sentence_correction": "句子纠错",
+        "conversation_practice": "汉语对话",
         "function_switch": "功能切换"
     }
 }

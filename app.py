@@ -1,23 +1,27 @@
 import gradio as gr
 from utils.i18n_utils import I18N
-from src.web.pages.home import home_page
+from src.web.pages.home import home
 from src.web.pages.sidebar import sidebar
 
 
-def load_header(path="src/web/static/html/header.html"):
-    with open(path, "r") as header_file:
-        header = header_file.read()
-    return header
+i18n = I18N("locales", "zh")
 
 
-i18n = I18N("locales", "en")
+def setup_component_interactions(sidebar_interface, home_interface):
+    sidebar_interface["character_resolution"].click(
+        fn=lambda: gr.update(visible=False),
+        inputs=[],
+        outputs=[home_interface["page"]],
+    )
+
+
 
 with gr.Blocks(
     theme=gr.themes.Soft(),
+    css_paths=["src/web/static/css/home.css"],
 ) as demo:
-    gr.HTML(load_header())
-
-    home_page = home_page(i18n)
-    sidebar = sidebar(i18n, [home_page])
+    home_interface = home(i18n)
+    sidebar = sidebar(i18n)
+    setup_component_interactions(sidebar, home_interface)
 
 demo.launch()

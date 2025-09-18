@@ -28,6 +28,9 @@
         "character_resolution": "Character Resolution",
         "vocabulary_comprehension": "Vocabulary Comprehension",
         "function_switch": "Function Switch",
+        "pronunciation": "Pronunciation",
+        "sentence_correction": "Sentence Correction",
+        "conversation_practice": "Conversation Practice",
         "grammar_learning": "Grammar Learning"
     }
 }
