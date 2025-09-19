@@ -5,7 +5,7 @@ from contextlib import contextmanager
 import logging
 
 # Public API exports
-__all__ = ["DatabaseManager", "db_manager"]
+__all__ = ["DatabaseManager"]
 
 DB_FILE = str(Path(__file__).resolve().parent / "text.db")
 
