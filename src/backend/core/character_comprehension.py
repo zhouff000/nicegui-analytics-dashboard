@@ -3,23 +3,43 @@ import os
 import dotenv
 import tomllib
 
-dotenv.load_dotenv("./.env")
+# ...existing code...
+from pathlib import Path
+from functools import lru_cache
+
+dotenv.load_dotenv(dotenv.find_dotenv(), override=True)
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+PROJECT_CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"
+PROMPT_TOML_PATH = Path(
+    os.getenv("PROMPT_TOML_PATH", PROJECT_CONFIG_DIR / "prompt.toml")
+)
+CC_CONFIG_TOML_PATH = Path(
+    os.getenv("CC_CONFIG_TOML_PATH", PROJECT_CONFIG_DIR / "config.toml")
+)
+
+
+@lru_cache(maxsize=1)
+def _load_prompts():
+    with open(PROMPT_TOML_PATH, "rb") as f:
+        return tomllib.load(f)["character_comprehension"]
+
+
+@lru_cache(maxsize=1)
+def _load_cc_config():
+    with open(CC_CONFIG_TOML_PATH, "rb") as f:
+        return tomllib.load(f)["character_comprehension"]
 
 
 def _prompt_template(character, scenario):
-    with open("src/backend/config/prompt.toml", "rb") as f:
-        prompt = tomllib.load(f)["character_comprehension"]
-
+    prompt = _load_prompts()
     return prompt[scenario].format(character=character)
 
 
 def chat_response(character, scenario, stream=False):
-    with open("src/backend/config/config.toml", "rb") as f:
-        config = tomllib.load(f)["character_comprehension"]
-
+    config = _load_cc_config()
     message = _prompt_template(character, scenario)
-
     response = client.chat.completions.create(
         model=config[scenario]["openai_model"],
         messages=[{"role": "user", "content": message}],
