@@ -2,7 +2,7 @@ from gradio import Button, Row, HTML
 from utils.i18n_utils import I18N
 
 
-def load_header(path="src/web/static/html/header.html"):
+def _load_header(path="src/web/static/html/header.html"):
     with open(path, "r") as header_file:
         header = header_file.read()
     return header
@@ -10,7 +10,7 @@ def load_header(path="src/web/static/html/header.html"):
 
 def home(i18n: I18N):
     i18n.set_scope("home")
-    header = HTML(load_header())
+    header = HTML(_load_header())
     with Row() as page:
         btn1 = Button(
             icon="src/web/static/icon/patterns_character_icon.ico",

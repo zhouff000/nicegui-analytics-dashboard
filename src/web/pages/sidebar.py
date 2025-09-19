@@ -1,13 +1,13 @@
 from gradio import Button, Markdown, Sidebar
 from utils.i18n_utils import I18N
 
-STATIC_FILE_MAPPING = {
+_STATIC_FILE_MAPPING = {
     "character": "src/web/static/icon/patterns_character_icon.ico",
     "pronunciation": "src/web/static/icon/patterns_character_icon.ico",
 }
 
 # 定义按钮配置表
-BUTTON_CONFIGS = [
+_BUTTON_CONFIGS = [
     {"key": "character_resolution", "icon": "character", "visible": True},
     {"key": "vocabulary_comprehension", "icon": "pronunciation", "visible": False},
     {"key": "grammar_learning", "icon": "pronunciation", "visible": False},
@@ -24,7 +24,7 @@ def sidebar(
         Markdown(f"## {i18n('choose_function')}")
         Markdown("---")
         registered_components["home_page"] = Button(
-            icon=STATIC_FILE_MAPPING["pronunciation"],
+            icon=_STATIC_FILE_MAPPING["pronunciation"],
             value=i18n("home_page"),
             size="lg",
             variant="primary",
@@ -32,9 +32,9 @@ def sidebar(
         Markdown("---")
 
         registered_components["sidebar"] = sidebar
-        for cfg in BUTTON_CONFIGS:
+        for cfg in _BUTTON_CONFIGS:
             btn = Button(
-                icon=STATIC_FILE_MAPPING[cfg["icon"]],
+                icon=_STATIC_FILE_MAPPING[cfg["icon"]],
                 value=i18n(cfg["key"]),
                 size="md",
                 variant="secondary",
