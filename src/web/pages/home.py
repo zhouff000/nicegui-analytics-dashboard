@@ -1,5 +1,6 @@
 from gradio import Button, Row, HTML
-from utils.i18n_utils import I18N
+from src.web.utils.i18n_utils import I18N
+
 
 
 def _load_header(path="src/web/static/html/header.html"):

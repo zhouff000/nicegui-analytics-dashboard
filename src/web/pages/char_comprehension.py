@@ -4,7 +4,7 @@ from gradio import (
     Chatbot,
     Textbox,
 )
-from utils.i18n_utils import I18N
+from src.web.utils.i18n_utils import I18N
 
 
 def _slow_echo(message: str, history: list):
