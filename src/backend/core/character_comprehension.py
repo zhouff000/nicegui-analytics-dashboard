@@ -6,8 +6,10 @@ import tomllib
 from pathlib import Path
 from functools import lru_cache
 
-dotenv.load_dotenv(dotenv.find_dotenv(), override=True)
 
+__all__ = ["chat_response"]
+
+dotenv.load_dotenv(dotenv.find_dotenv(), override=True)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 PROJECT_CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"

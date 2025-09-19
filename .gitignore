@@ -16,3 +16,6 @@ playground/
 
 # OSX files
 .DS_Store
+
+# database files
+*.db

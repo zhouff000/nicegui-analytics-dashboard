@@ -1,6 +1,7 @@
 from gradio import Button, Markdown, Sidebar
 from src.web.utils.i18n_utils import I18N
 
+__all__ = ["sidebar"]
 
 _STATIC_FILE_MAPPING = {
     "character": "src/web/static/icon/patterns_character_icon.ico",
