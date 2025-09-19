@@ -20,10 +20,17 @@ def sidebar(
 ):
     i18n.set_scope("sidebar")
     with Sidebar(position="left", open=True) as sidebar:
+        registered_components = {}
         Markdown(f"## {i18n('choose_function')}")
         Markdown("---")
+        registered_components["home_page"] = Button(
+            icon=STATIC_FILE_MAPPING["pronunciation"],
+            value=i18n("home_page"),
+            size="lg",
+            variant="primary",
+        )
+        Markdown("---")
 
-        registered_components = {}
         registered_components["sidebar"] = sidebar
         for cfg in BUTTON_CONFIGS:
             btn = Button(
