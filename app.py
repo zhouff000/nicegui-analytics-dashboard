@@ -1,5 +1,5 @@
 import gradio as gr
-from utils.i18n_utils import I18N
+from src.web.utils.i18n_utils import I18N
 from src.web.pages.home import home
 from src.web.pages.sidebar import sidebar
 
@@ -23,5 +23,4 @@ with gr.Blocks(
     home_interface = home(i18n)
     sidebar = sidebar(i18n)
     setup_component_interactions(sidebar, home_interface)
-
 demo.launch()

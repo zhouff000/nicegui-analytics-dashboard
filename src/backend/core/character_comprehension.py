@@ -6,11 +6,18 @@ from typing import Dict, Any, Optional, Union, Generator
 from pathlib import Path
 from functools import lru_cache
 from ..database.sqlite import DatabaseManager
+import re
+from ..utils.paddle_ocr import call_ocr
+from .character_response import (
+    CharacterResponse,
+    create_database_response,
+    create_llm_response,
+)
 
 __all__ = [
-    "generate_character_response",
-    "get_character_from_database",
+    "llm_character_response",
     "get_character_response",
+    "CharacterResponse",
 ]
 
 dotenv.load_dotenv(dotenv.find_dotenv(), override=True)
@@ -26,6 +33,61 @@ _PROMPT_CONFIG_PATH = Path(
 _CHARACTER_CONFIG_PATH = Path(
     os.getenv("CC_CONFIG_TOML_PATH", _PROJECT_CONFIG_DIR / "config.toml")
 )
+
+
+def _is_valid_image_path(path_str: str) -> bool:
+    if not os.path.isfile(path_str):
+        return False
+    valid_extensions = {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp"}
+    return Path(path_str).suffix.lower() in valid_extensions
+
+
+def _extract_first_chinese_character(text: str) -> Optional[str]:
+    if not text:
+        return None
+
+    chinese_pattern = r"[\u4e00-\u9fff]"
+    match = re.search(chinese_pattern, text)
+    return match.group() if match else None
+
+
+def _extract_first_character(input_str: str) -> str:
+    """Extract the first Chinese character from input
+
+    Args:
+        input_str: Input string, could be a single Chinese character or image path
+
+    Returns:
+        The first Chinese character extracted
+
+    Raises:
+        ValueError: If no valid Chinese character can be extracted
+    """
+    # Case 1: Direct single Chinese character
+    if len(input_str) == 1 and "\u4e00" <= input_str <= "\u9fff":
+        return input_str
+
+    # Case 2: Image path, use OCR
+    if _is_valid_image_path(input_str):
+        try:
+            ocr_text = call_ocr(file_path=input_str)
+            first_char = _extract_first_chinese_character(ocr_text)
+            if first_char:
+                return first_char
+            else:
+                raise ValueError(
+                    f"No Chinese character found in OCR result: {ocr_text}"
+                )
+        except Exception as e:
+            raise ValueError(f"OCR processing failed: {e}")
+
+    # Case 3: Text string containing Chinese characters
+    first_char = _extract_first_chinese_character(input_str)
+    if first_char:
+        return first_char
+
+    # If none match, raise exception
+    raise ValueError(f"Unable to extract Chinese character from input: '{input_str}'")
 
 
 @lru_cache(maxsize=1)
@@ -58,7 +120,7 @@ def _build_prompt_message(character: str, scenario: str) -> str:
     return prompts[scenario].format(character=character)
 
 
-def generate_character_response(
+def llm_character_response(
     character: str, scenario: str, stream: bool = False
 ) -> Union[Any, Generator]:
     """Generate AI response for character in given scenario.
@@ -88,7 +150,7 @@ def generate_character_response(
         raise RuntimeError(f"Failed to generate character response: {e}")
 
 
-def get_character_from_database(character: str) -> Optional[Dict[str, Any]]:
+def database_character_response(character: str) -> Optional[Dict[str, Any]]:
     """Retrieve character data from database.
 
     Args:
@@ -101,7 +163,7 @@ def get_character_from_database(character: str) -> Optional[Dict[str, Any]]:
         db = DatabaseManager()
         db.get_connection()
         character_data = db.execute_single(
-            "SELECT * FROM documents WHERE Character = ?", (character,)
+            "SELECT * FROM documents WHERE word = ?", (character,)
         )
 
         # Return None if data doesn't exist or has incomplete fields
@@ -119,47 +181,30 @@ def get_character_from_database(character: str) -> Optional[Dict[str, Any]]:
 
 
 def get_character_response(
-    character: str, scenario: str, stream: bool = False
-) -> Union[Dict[str, Any], Any, Generator]:
-    """Get character response from database or generate new one.
+    input_str: str, scenario: str, stream: bool = False
+) -> CharacterResponse:
+    """Get character response with unified format.
 
-    First attempts to retrieve from database. If not found or incomplete,
+    First extracts the first Chinese character from input (direct character or OCR from image),
+    then attempts to retrieve from database. If not found or incomplete,
     generates a new response using AI.
 
     Args:
-        character: The character to analyze
+        input_str: Input string (single Chinese character or image path)
         scenario: The scenario type
         stream: Whether to stream AI response if generation is needed
 
     Returns:
-        Database result dict or AI response/generator
+        CharacterResponse object with unified interface
     """
+    # Extract the first Chinese character
+    character = _extract_first_character(input_str)
+
     # Try database first
-    db_result = get_character_from_database(character)
+    db_result = database_character_response(character)
     if db_result is not None:
-        return db_result
+        return create_database_response(character, scenario, db_result)
 
     # Generate new response if not in database
-    return generate_character_response(character, scenario, stream)
-
-
-# Maintain backward compatibility
-chat_response = generate_character_response
-database_result = get_character_from_database
-response_and_db = get_character_response
-
-if __name__ == "__main__":
-    # Example usage
-    try:
-        response = get_character_response("林", "practice")
-        print(f"Response type: {type(response)}")
-
-        # Streaming example:
-        # for chunk in generate_character_response("林", "practice", stream=True):
-        #     if hasattr(chunk.choices[0].delta, 'reasoning_content') and chunk.choices[0].delta.reasoning_content:
-        #         print(chunk.choices[0].delta.reasoning_content, end="", flush=True)
-        #     elif hasattr(chunk.choices[0].delta, 'content') and chunk.choices[0].delta.content:
-        #         print(chunk.choices[0].delta.content, end="", flush=True)
-
-    except Exception as e:
-        print(f"Error: {e}")
+    llm_response = llm_character_response(character, scenario, stream)
+    return create_llm_response(character, scenario, llm_response, stream)

@@ -1,8 +1,9 @@
-from gradio import Button, Row, HTML
+from gradio import Button, Row, HTML, File
 from src.web.utils.i18n_utils import I18N
 
 
 __all__ = ["home"]
+
 
 def load_header(path="src/web/static/html/header.html"):
     with open(path, "r") as header_file:
@@ -27,4 +28,14 @@ def home(i18n: I18N):
             variant="primary",
             elem_classes="home_button",
         )
-    return {"header": header, "page": page, "btn_1": btn1, "btn_2": btn2}
+        file = File(
+            label="Upload Character File",
+            file_types=[".pdf", ".png", ".jpg", ".jpeg"],
+            elem_classes="home_file",
+        )
+        file.upload(
+            fn=lambda x: print(x.__dict__) if x else None,
+            inputs=[file],
+            outputs=[file],
+        )
+    return {"header": header, "page": page, "btn_1": btn1, "btn_2": btn2, "file": file}

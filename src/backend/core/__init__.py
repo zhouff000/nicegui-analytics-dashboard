@@ -1,3 +1,5 @@
-from .character_comprehension import chat_response
+from .character_comprehension import (
+    llm_character_response,
+)
 
-__all__ = ["chat_response"]
+__all__ = ["llm_character_response"]

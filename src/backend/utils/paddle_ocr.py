@@ -6,6 +6,11 @@ import os
 from pathlib import Path
 from functools import lru_cache
 
+__all__ = [
+    "PaddleOCR",
+    "call_ocr",
+]
+
 # Configuration paths
 _PROJECT_CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"
 _PADDLE_OCR_CONFIG_PATH = Path(
@@ -67,7 +72,7 @@ class PaddleOCR:
             print(f"Failed to read file: {e}")
             raise
 
-        return self._call_ocr_api(file_data, file_type)
+        return self._call_ocr_api(file_data, file_type)[0]
 
     def extract_text_from_bytes(
         self, image_bytes: bytes, file_type: int = 1
@@ -126,7 +131,7 @@ def call_ocr(
     """
     base_url = url.replace("/ocr", "")
     ocr_client = PaddleOCR(base_url)
-    return ocr_client.extract_text_from_file(file_path)
+    return ocr_client.extract_text_from_file(file_path)[0]
 
 
 if __name__ == "__main__":
