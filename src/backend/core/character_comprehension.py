@@ -163,7 +163,8 @@ def database_character_response(character: str) -> Optional[Dict[str, Any]]:
         db = DatabaseManager()
         db.get_connection()
         character_data = db.execute_single(
-            "SELECT * FROM documents WHERE word = ?", (character,)
+            "SELECT * FROM documents WHERE character = ? AND source = ?",
+            (character, "lwd"),
         )
 
         # Return None if data doesn't exist or has incomplete fields

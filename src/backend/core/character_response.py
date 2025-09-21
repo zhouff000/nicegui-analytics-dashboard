@@ -106,27 +106,11 @@ def create_database_response(
 ) -> CharacterResponse:
     """Create database response"""
     # Extract content from database data, adjust according to actual fields
-    content_fields = [
-        "id",
-        "source",
-        "character",
-        "pronunciation",
-        "stroke",
-        "meaning",
-        "idioms",
-        "culture",
-        "practice",
-    ]
-    content = ""
+    print(db_data.keys(), scenario)
+    content = db_data.get(scenario, None)
 
-    for field in content_fields:
-        if field in db_data and db_data[field]:
-            content = str(db_data[field])
-            break
-
-    # If no content field found, use string representation of all data
     if not content:
-        content = str(db_data)
+        raise ValueError("No content found in database data")
 
     return CharacterResponse(
         character=character,

@@ -251,7 +251,7 @@ if __name__ == "__main__":
     # Test 3: Loading and querying existing database
     print("\n--- Test 3: Loading existing database file ---")
 
-    # # Create a custom database file for testing
+    # Create a custom database file for testing
     # custom_db_path = str(Path(__file__).resolve().parent / "test_custom.db")
     # custom_db = DatabaseManager(custom_db_path)
 
