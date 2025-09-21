@@ -9,6 +9,7 @@ wheels/
 # Virtual environments
 .venv
 
+# modules testing files
 playground/
 
 # environment files
@@ -19,3 +20,6 @@ playground/
 
 # database files
 *.db
+
+# test static files
+test/

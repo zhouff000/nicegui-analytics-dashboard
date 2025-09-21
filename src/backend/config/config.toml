@@ -11,3 +11,8 @@ openai_model = "Qwen/Qwen3-14B"
 openai_model = "Qwen/Qwen3-14B"
 [character_comprehension.stroke]
 openai_model = "Qwen/Qwen3-14B"
+
+
+[ocr]
+[paddle_ocr]
+base_url = "http://10.248.137.210:8080"
