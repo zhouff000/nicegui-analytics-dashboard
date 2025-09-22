@@ -165,8 +165,10 @@ class DatabaseManager:
         return self.execute_query(query)
 
 
+_DB_FILE_PATH = Path(__file__).resolve().parents[3] / "sqlite3" / "main.db"
+
 # Create default database manager instance
-db_manager = DatabaseManager()
+db_manager = DatabaseManager(_DB_FILE_PATH)
 
 
 if __name__ == "__main__":

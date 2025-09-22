@@ -106,7 +106,6 @@ def create_database_response(
 ) -> CharacterResponse:
     """Create database response"""
     # Extract content from database data, adjust according to actual fields
-    print(db_data.keys(), scenario)
     content = db_data.get(scenario, None)
 
     if not content:

@@ -33,6 +33,7 @@ _PROMPT_CONFIG_PATH = Path(
 _CHARACTER_CONFIG_PATH = Path(
     os.getenv("CC_CONFIG_TOML_PATH", _PROJECT_CONFIG_DIR / "config.toml")
 )
+_DB_FILE_PATH = Path(__file__).resolve().parents[3] / "sqlite3" / "main.db"
 
 
 def _is_valid_image_path(path_str: str) -> bool:
@@ -162,10 +163,10 @@ def database_character_response(
         Character data dict if found and complete, None otherwise
     """
     try:
-        db = DatabaseManager()
+        db = DatabaseManager(_DB_FILE_PATH)
         db.get_connection()
         character_data = db.execute_single(
-            "SELECT * FROM documents WHERE character = ? AND source = ?",
+            "SELECT * FROM character_comprehension WHERE character = ? AND locale = ?",
             (character, locale),
         )
 
@@ -184,7 +185,7 @@ def database_character_response(
 
 
 def get_character_response(
-    input_str: str, scenario: str, stream: bool = False, locale: str = "zh"
+    input_str: str, scenario: str, stream: bool = False, locale: str = "en"
 ) -> CharacterResponse:
     """Get character response with unified format.
 
@@ -204,10 +205,10 @@ def get_character_response(
     character = _extract_first_character(input_str)
 
     # Try database first
-    db_result = database_character_response(character)
+    db_result = database_character_response(character, locale)
     if db_result is not None:
         return create_database_response(character, scenario, db_result)
 
     # Generate new response if not in database
-    llm_response = llm_character_response(character, scenario, stream)
+    llm_response = llm_character_response(character, scenario, stream, locale)
     return create_llm_response(character, scenario, llm_response, stream)
