@@ -8,7 +8,7 @@ from functools import lru_cache
 from ..database.sqlite import DatabaseManager
 import re
 from ..utils.paddle_ocr import call_ocr
-from .character_response import (
+from .dataclass import (
     CharacterResponse,
     create_database_response,
     create_llm_response,
@@ -91,11 +91,11 @@ def _extract_first_character(input_str: str) -> str:
 
 
 @lru_cache(maxsize=1)
-def _load_prompt_templates() -> Dict[str, Any]:
+def _load_prompt_templates(locale) -> Dict[str, Any]:
     """Load prompt templates from TOML configuration."""
     try:
         with open(_PROMPT_CONFIG_PATH, "rb") as f:
-            return tomllib.load(f)["character_comprehension"]
+            return tomllib.load(f)["character_comprehension"][locale]
     except (FileNotFoundError, KeyError, tomllib.TOMLDecodeError) as e:
         raise RuntimeError(f"Failed to load prompt templates: {e}")
 
@@ -110,9 +110,9 @@ def _load_character_config() -> Dict[str, Any]:
         raise RuntimeError(f"Failed to load character config: {e}")
 
 
-def _build_prompt_message(character: str, scenario: str) -> str:
+def _build_prompt_message(character: str, scenario: str, locale: str) -> str:
     """Build prompt message for given character and scenario."""
-    prompts = _load_prompt_templates()
+    prompts = _load_prompt_templates(locale)
 
     if scenario not in prompts:
         raise ValueError(f"Scenario '{scenario}' not found in prompt templates")
@@ -121,7 +121,7 @@ def _build_prompt_message(character: str, scenario: str) -> str:
 
 
 def llm_character_response(
-    character: str, scenario: str, stream: bool = False
+    character: str, scenario: str, locale: str, stream: bool = False
 ) -> Union[Any, Generator]:
     """Generate AI response for character in given scenario.
 
@@ -138,7 +138,7 @@ def llm_character_response(
     if scenario not in config:
         raise ValueError(f"Scenario '{scenario}' not found in configuration")
 
-    message = _build_prompt_message(character, scenario)
+    message = _build_prompt_message(character, scenario, locale)
 
     try:
         return _openai_client.chat.completions.create(
@@ -150,7 +150,9 @@ def llm_character_response(
         raise RuntimeError(f"Failed to generate character response: {e}")
 
 
-def database_character_response(character: str) -> Optional[Dict[str, Any]]:
+def database_character_response(
+    character: str, locale: str
+) -> Optional[Dict[str, Any]]:
     """Retrieve character data from database.
 
     Args:
@@ -164,7 +166,7 @@ def database_character_response(character: str) -> Optional[Dict[str, Any]]:
         db.get_connection()
         character_data = db.execute_single(
             "SELECT * FROM documents WHERE character = ? AND source = ?",
-            (character, "lwd"),
+            (character, locale),
         )
 
         # Return None if data doesn't exist or has incomplete fields
@@ -182,7 +184,7 @@ def database_character_response(character: str) -> Optional[Dict[str, Any]]:
 
 
 def get_character_response(
-    input_str: str, scenario: str, stream: bool = False
+    input_str: str, scenario: str, stream: bool = False, locale: str = "zh"
 ) -> CharacterResponse:
     """Get character response with unified format.
 

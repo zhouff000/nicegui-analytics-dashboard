@@ -1,4 +1,4 @@
-from gradio import Button, Markdown, Sidebar
+from gradio import Button, Markdown, Sidebar, Image
 from src.web.utils.i18n_utils import I18N
 
 __all__ = ["sidebar"]
@@ -6,6 +6,7 @@ __all__ = ["sidebar"]
 _STATIC_FILE_MAPPING = {
     "character": "src/web/static/icon/patterns_character_icon.ico",
     "pronunciation": "src/web/static/icon/patterns_character_icon.ico",
+    "sidebar_header": "src/web/static/images/sidebar_header.png",
 }
 
 # 定义按钮配置表
@@ -22,6 +23,13 @@ def sidebar(
 ):
     i18n.set_scope("sidebar")
     with Sidebar(position="left", open=True) as sidebar:
+        Image(
+            _STATIC_FILE_MAPPING["sidebar_header"],
+            show_label=False,
+            interactive=False,
+            show_download_button=False,
+            show_fullscreen_button=False,
+        )
         registered_components = {}
         Markdown(f"## {i18n('choose_function')}")
         Markdown("---")

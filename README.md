@@ -1,6 +1,51 @@
+## 国家语言与缩写（项目统一使用ISO 639-1 标准）
+### 卢旺达 (Rwanda) 的官方语言
+卢旺达的官方语言有四种：
+* **卢旺达语 (Kinyarwanda)**：ISO 639-1 缩写为 **rw**，ISO 639-2 和 ISO 639-3 缩写为 **kin**。
+* **法语 (French)**：ISO 639-1 缩写为 **fr**，ISO 639-2 和 ISO 639-3 缩写为 **fre** 或 **fra**。
+* **英语 (English)**：ISO 639-1 缩写为 **en**，ISO 639-2 和 ISO 639-3 缩写为 **eng**。
+* **斯瓦希里语 (Swahili)**：ISO 639-1 缩写为 **sw**，ISO 639-2 和 ISO 639-3 缩写为 **swa**。
+
+---
+
+### 斯里兰卡 (Sri Lanka) 的官方语言
+斯里兰卡的官方语言有三种：
+* **僧伽罗语 (Sinhala)**：ISO 639-1 缩写为 **si**，ISO 639-2 和 ISO 639-3 缩写为 **sin**。
+* **泰米尔语 (Tamil)**：ISO 639-1 缩写为 **ta**，ISO 639-2 和 ISO 639-3 缩写为 **tam**。
+* **英语 (English)**：ISO 639-1 缩写为 **en**，ISO 639-2 和 ISO 639-3 缩写为 **eng**。
 
 
-## 1. 基础使用示例
+
+### 常见的 ISO 639-1 语言及其缩写：
+
+| 语言名称 | 英文名称 | ISO 639-1 缩写 |
+|---|---|---|
+| 中文 | Chinese | **zh** |
+| 英文 | English | **en** |
+| 法文 | French | **fr** |
+| 德文 | German | **de** |
+| 日文 | Japanese | **ja** |
+| 韩文 | Korean | **ko** |
+| 西班牙文 | Spanish | **es** |
+| 葡萄牙文 | Portuguese | **pt** |
+| 俄文 | Russian | **ru** |
+| 意大利文 | Italian | **it** |
+| 阿拉伯文 | Arabic | **ar** |
+| 荷兰文 | Dutch | **nl** |
+| 希腊文 | Greek | **el** |
+| 瑞典文 | Swedish | **sv** |
+| 泰文 | Thai | **th** |
+| 越南文 | Vietnamese | **vi** |
+| 土耳其文 | Turkish | **tr** |
+| 印地文 | Hindi | **hi** |
+| 孟加拉文 | Bengali | **bn** |
+| 乌克兰文 | Ukrainian | **uk** |
+| 希伯来文 | Hebrew | **he** |
+| 波兰文 | Polish | **pl** |
+
+
+## 汉字解析 API
+### 1. 基础使用示例
 
 ```python
 from src.backend.core.character_comprehension import get_character_response
@@ -13,7 +58,7 @@ print(f"Content: {response.get_content()}")
 print(f"Reasoning: {response.get_reasoning_content()}")
 ```
 
-## 2. 流式响应示例
+### 2. 流式响应示例
 
 ```python
 # 流式响应
@@ -29,7 +74,7 @@ if stream_response.is_streaming:
     print()  # 换行
 ```
 
-## 3. 仅获取特定内容
+### 3. 仅获取特定内容
 
 ```python
 # 仅获取推理内容
@@ -44,7 +89,7 @@ for content in stream_response.stream_content_only():
     print(content, end="", flush=True)
 ```
 
-## 4. 数据库vs LLM响应处理
+### 4. 数据库vs LLM响应处理
 
 ```python
 response = get_character_response("林", "practice")
@@ -59,7 +104,7 @@ elif response.source.value == "llm":
     print(f"推理过程: {response.get_reasoning_content()}")
 ```
 
-## 5. 转换为字典格式
+### 5. 转换为字典格式
 
 ```python
 response = get_character_response("火", "practice")
@@ -73,7 +118,7 @@ for key, value in response_dict.items():
         print(f"{key}: {value}")
 ```
 
-## 6. 图片OCR示例
+### 6. 图片OCR示例
 
 ```python
 # 使用图片路径（需要有效的图片文件）
@@ -85,7 +130,7 @@ except ValueError as e:
     print(f"图片处理错误: {e}")
 ```
 
-## 7. 错误处理示例
+### 7. 错误处理示例
 
 ```python
 # 处理无效输入
@@ -109,7 +154,7 @@ except ValueError as e:
     print(f"流式使用错误: {e}")
 ```
 
-## 8. 在Jupyter Notebook中的完整示例
+### 8. 在Jupyter Notebook中的完整示例
 
 ```python
 # 在你的notebook中可以这样使用

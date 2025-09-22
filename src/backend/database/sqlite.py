@@ -7,13 +7,11 @@ import logging
 # Public API exports
 __all__ = ["DatabaseManager"]
 
-DB_FILE = str(Path(__file__).resolve().parent / "text.db")
-
 
 class DatabaseManager:
     """SQLite database manager providing standard database operation interface"""
 
-    def __init__(self, db_path: str = DB_FILE):
+    def __init__(self, db_path: str | None = None):
         """
         Initialize database manager
 
@@ -21,6 +19,9 @@ class DatabaseManager:
             db_path: Database file path, defaults to DB_FILE
         """
         self.db_path = db_path
+        if not db_path:
+            raise ValueError("Database path must be provided")
+
         self.logger = logging.getLogger(__name__)
         self._ensure_db_directory()
 
@@ -170,6 +171,7 @@ db_manager = DatabaseManager()
 
 if __name__ == "__main__":
     # Test example for DatabaseManager class
+    DB_FILE = str(Path(__file__).resolve().parents[3] / "sqlite3" / "character.db")
 
     # print("=== Testing DatabaseManager Class ===")
 

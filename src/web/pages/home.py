@@ -28,14 +28,5 @@ def home(i18n: I18N):
             variant="primary",
             elem_classes="home_button",
         )
-        file = File(
-            label="Upload Character File",
-            file_types=[".pdf", ".png", ".jpg", ".jpeg"],
-            elem_classes="home_file",
-        )
-        file.upload(
-            fn=lambda x: print(x.__dict__) if x else None,
-            inputs=[file],
-            outputs=[file],
-        )
-    return {"header": header, "page": page, "btn_1": btn1, "btn_2": btn2, "file": file}
+
+    return {"header": header, "page": page, "btn_1": btn1, "btn_2": btn2}
