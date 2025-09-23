@@ -41,7 +41,7 @@
         "function_switch": "功能切换"
     },
     "char_resolution": {
-        "input_prompt": "请输入一个汉字以获取详细解析。",
+        "input_prompt": "请输入一个汉字或上传图片以获取详细解析。",
         "submit_button": "解析汉字",
         "loading_message": "正在解析汉字...",
         "error_message": "无法解析该汉字，请重试。",

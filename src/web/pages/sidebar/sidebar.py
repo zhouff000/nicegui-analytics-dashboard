@@ -21,6 +21,7 @@ def sidebar(
         components["sidebar"] = sidebar
         components["header_image"] = Image(
             _STATIC_FILE_MAPPING["sidebar_header"],
+            container=False,
             show_label=False,
             interactive=False,
             show_download_button=False,
