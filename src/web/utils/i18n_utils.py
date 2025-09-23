@@ -95,31 +95,4 @@ class I18N:
     __call__ = t
 
 
-if __name__ == "__main__":
-    # 1. 初始化一个 i18n 实例，默认语言为中文
-    i18n = I18N(locales_dir="locales", default_lang="zh")
-    print("--- 默认 (zh) ---")
-    print(f"全局 'ok': {i18n('ok')}")
-
-    # 2. 切换作用域到 'login'
-    i18n.set_scope("login")
-    print("\n--- 切换到 'login' 作用域 (zh) ---")
-    print(f"'login' 作用域的 'login_button': {i18n('login_button')}")
-    print(f"回退到全局的 'cancel': {i18n('cancel')}")
-
-    # 3. 切换语言到 'en'
-    i18n.set_lang("en")
-    print("\n--- 保持 'login' 作用域, 切换语言到 'en' ---")
-    print(f"'login' 作用域的 'login_button': {i18n('login_button')}")
-    print(f"回退到全局的 'cancel': {i18n('cancel')}")
-
-    # 4. 切换到另一个作用域 'sidebar'
-    i18n.set_scope("sidebar")
-    print("\n--- 切换到 'sidebar' 作用域 (en) ---")
-    print(f"'sidebar' 作用域的 'choose_function': {i18n('choose_function')}")
-
-    # 5. 直接通过构造函数创建带作用域的实例
-    print("\n--- 直接创建 'home' 作用域实例 (en) ---")
-    i18n_home = I18N(locales_dir="locales", default_lang="zh", scope="home")
-    i18n_home.set_lang("en")
-    print(f"'home' 作用域的 'welcome_message': {i18n_home('welcome_message')}")
+i18n = I18N("locales", "zh")

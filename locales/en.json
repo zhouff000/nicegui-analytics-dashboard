@@ -13,25 +13,38 @@
     "delete": "Delete",
     "edit": "Edit",
     "new": "New",
-    "choose_function": "Choose Function",
-    "function_switch": "Function Switch",
     "login": {
         "username_prompt": "Please enter your username",
         "password_prompt": "Please enter your password",
         "login_button": "Login"
     },
-    "home": {
-        "welcome_message": "Welcome to the home page"
+    "dashboard": {
+        "welcome_message": "Welcome back! Start your Chinese learning journey today.",
+        "page_title": "Chongqing Normal University - Chinese Learning Assistant",
+        "choose_function": "Choose Function",
+        "character_resolution": "Character Analysis",
+        "vocabulary_comprehension": "Vocabulary Comprehension",
+        "grammar_learning": "Grammar Learning",
+        "sentence_correction": "Sentence Correction",
+        "conversation_practice": "Chinese Conversation",
+        "dashboard": "Dashboard"
     },
     "sidebar": {
         "choose_function": "Choose Function",
-        "character_resolution": "Character Resolution",
+        "character_resolution": "Character Analysis",
         "vocabulary_comprehension": "Vocabulary Comprehension",
         "function_switch": "Function Switch",
         "pronunciation": "Pronunciation",
         "sentence_correction": "Sentence Correction",
-        "conversation_practice": "Conversation Practice",
+        "conversation_practice": "Chinese Conversation",
         "home_page": "Home",
-        "grammar_learning": "Grammar Learning"
+        "grammar_learning": "Grammar Learning",
+        "dashboard": "Dashboard"
+    },
+    "character_resolution": {
+        "input_prompt": "Please enter a Chinese character or upload an image for detailed analysis.",
+        "submit_button": "Analyze Character",
+        "loading_message": "Analyzing character...",
+        "error_message": "Unable to analyze this character, please try again."
     }
 }
