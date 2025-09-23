@@ -1,5 +1,5 @@
 _STATIC_FILE_MAPPING = {
-    "sidebar_header": "src/web/static/images/header.png",
+    "sidebar_header": "src/web/static/images/sidebar_header.png",
     "character_resolution": "src/web/static/icon/sidebar_character_icon.ico",
 }
 

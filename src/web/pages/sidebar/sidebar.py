@@ -9,7 +9,7 @@ def sidebar(
     i18n: I18N,
 ):
     i18n.set_scope("sidebar")
-    with Sidebar(position="left", open=False) as sidebar:
+    with Sidebar(position="left", open=True) as sidebar:
         components = {
             "sidebar": sidebar,
             "header_image": None,

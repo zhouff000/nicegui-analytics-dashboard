@@ -56,6 +56,7 @@ def setup_component_interactions(components):
 
 with gr.Blocks(
     theme=gr.themes.Soft(),
+    css="footer {visibility: hidden}",
     css_paths=["src/web/static/css/home.css", "src/web/static/css/char_resolution.css"],
     fill_height=True,
 ) as demo:
