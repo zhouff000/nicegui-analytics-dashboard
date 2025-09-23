@@ -19,8 +19,14 @@
         "login_button": "登录"
     },
     "home": {
-        "welcome_message": "欢迎来到主页",
-        "choose_function": "选择功能"
+        "welcome_message": "欢迎回来！开始今天的汉语学习之旅吧。",
+        "choose_function": "选择功能",
+        "character_resolution": "汉字解析",
+        "vocabulary_comprehension": "词汇理解",
+        "grammar_learning": "语法学习",
+        "sentence_correction": "句子纠错",
+        "conversation_practice": "汉语对话",
+        "dashboard": "仪表盘"
     },
     "sidebar": {
         "choose_function": "选择功能",
