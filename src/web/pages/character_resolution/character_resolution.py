@@ -3,7 +3,7 @@ from ...utils.i18n_utils import I18N
 # from src.backend.core.character_comprehension import get_character_response
 # from src.backend.core.dataclass import DataSource
 
-__all__ = ["char_comprehend_page"]
+__all__ = ["character_comprehend_page"]
 
 
 def slow_echo(message: str, history: list):
@@ -35,8 +35,8 @@ def slow_echo(message: str, history: list):
     #             yield reasoning + "\n\n" + response
 
 
-def char_comprehend_page(i18n: I18N):
-    i18n.set_scope("char_resolution")
+def character_comprehend_page(i18n: I18N):
+    i18n.set_scope("character_resolution")
     components = {
         "page": None,
         "chatbot": None,
@@ -50,17 +50,14 @@ def char_comprehend_page(i18n: I18N):
             type="messages",
             show_share_button=False,
             elem_classes="chatbot",
-            # scale=3,
         )
         components["textbox"] = MultimodalTextbox(
             lines=1,
             placeholder=f"{i18n('input_prompt')}",
             container=True,
-            # scale=1,
             show_label=False,
             submit_btn=True,
             autofocus=True,
-            # elem_classes="char-textbox",
         )
 
     return components

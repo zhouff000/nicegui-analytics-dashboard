@@ -6,7 +6,7 @@ __all__ = ["dashboard"]
 
 
 def dashboard(i18n: I18N):
-    i18n.set_scope("home")
+    i18n.set_scope("dashboard")
     components = {
         "page": None,
         "function_buttons": {

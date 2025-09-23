@@ -2,7 +2,9 @@ import gradio as gr
 from src.web.utils.i18n_utils import I18N
 from src.web.pages.dashboard.dashboard import dashboard
 from src.web.pages.sidebar.sidebar import sidebar
-from src.web.pages.char_resolution.character_resolution import char_comprehend_page
+from src.web.pages.character_resolution.character_resolution import (
+    character_comprehend_page,
+)
 
 i18n = I18N("locales", "zh")
 
@@ -17,27 +19,23 @@ def setup_component_interactions(components):
     components["sidebar"]["dashboard"].click(
         fn=lambda: (
             gr.update(visible=True),
-            gr.update(open=False),
             gr.update(visible=False),
         ),
         inputs=[],
         outputs=[
             components["dashboard"]["page"],
-            components["sidebar"]["sidebar"],
-            components["char_resolution"]["page"],
+            components["character_resolution"]["page"],
         ],
     )
 
     components["sidebar"]["character_resolution"].click(
         fn=lambda: (
             gr.update(visible=True),
-            gr.update(open=True),
             gr.update(visible=False),
         ),
         inputs=[],
         outputs=[
-            components["char_resolution"]["page"],
-            components["sidebar"]["sidebar"],
+            components["character_resolution"]["page"],
             components["dashboard"]["page"],
         ],
     )
@@ -46,7 +44,7 @@ def setup_component_interactions(components):
         fn=lambda: (gr.update(visible=True), gr.update(visible=False)),
         inputs=[],
         outputs=[
-            components["char_resolution"]["page"],
+            components["character_resolution"]["page"],
             components["dashboard"]["page"],
         ],
     )
@@ -65,7 +63,7 @@ with gr.Blocks(
         "header": header,
         "sidebar": sidebar(i18n),
         "dashboard": dashboard(i18n),
-        "char_resolution": char_comprehend_page(i18n),
+        "character_resolution": character_comprehend_page(i18n),
     }
     setup_component_interactions(components)
 
