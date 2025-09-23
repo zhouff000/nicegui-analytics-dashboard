@@ -1,4 +1,4 @@
-from gradio import Column, ChatInterface, Chatbot, Textbox
+from gradio import Column, Chatbot, MultimodalTextbox
 from ...utils.i18n_utils import I18N
 # from src.backend.core.character_comprehension import get_character_response
 # from src.backend.core.dataclass import DataSource
@@ -39,23 +39,28 @@ def char_comprehend_page(i18n: I18N):
     i18n.set_scope("char_resolution")
     components = {
         "page": None,
-        "chat_interface": None,
+        "chatbot": None,
+        "textbox": None,
     }
-    with Column(visible=False) as page:
+    with Column(visible=False, elem_classes="chat-container") as page:
         components["page"] = page
-        components["chat_interface"] = ChatInterface(
-            # visiable=False,
-            fn=slow_echo,
-            title=None,
-            chatbot=Chatbot(
-                placeholder="<strong>chatbot_placeholder</strong>", type="messages"
-            ),
-            textbox=Textbox(
-                placeholder=f"{i18n('input_prompt')}",
-                container=False,
-                scale=3,
-            ),
+        components["chatbot"] = Chatbot(
+            container=True,
+            show_label=False,
             type="messages",
-            fill_height=True,
+            show_share_button=False,
+            elem_classes="chatbot",
+            # scale=3,
         )
+        components["textbox"] = MultimodalTextbox(
+            lines=1,
+            placeholder=f"{i18n('input_prompt')}",
+            container=True,
+            # scale=1,
+            show_label=False,
+            submit_btn=True,
+            autofocus=True,
+            # elem_classes="char-textbox",
+        )
+
     return components
