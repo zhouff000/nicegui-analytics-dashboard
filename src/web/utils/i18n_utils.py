@@ -63,7 +63,8 @@ class I18N:
         """
         if scope == "global":
             self.scope = None
-        self.scope = scope
+        else:
+            self.scope = scope
         self.translator = self._get_translator(self.lang_code)
 
     def set_lang(self, lang_code: str):

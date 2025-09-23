@@ -8,6 +8,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "openai>=1.107.2",
     "streamlit>=1.49.1",
+    "watchdog>=6.0.0",
 ]
 
 [[tool.uv.index]]
