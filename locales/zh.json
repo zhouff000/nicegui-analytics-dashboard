@@ -18,8 +18,9 @@
         "password_prompt": "请输入密码",
         "login_button": "登录"
     },
-    "home": {
+    "dashboard": {
         "welcome_message": "欢迎回来！开始今天的汉语学习之旅吧。",
+        "page_title": "重庆师范大学 - 汉语学习助手",
         "choose_function": "选择功能",
         "character_resolution": "汉字解析",
         "vocabulary_comprehension": "词汇理解",
@@ -40,18 +41,10 @@
         "conversation_practice": "汉语对话",
         "function_switch": "功能切换"
     },
-    "char_resolution": {
+    "character_resolution": {
         "input_prompt": "请输入一个汉字或上传图片以获取详细解析。",
         "submit_button": "解析汉字",
         "loading_message": "正在解析汉字...",
-        "error_message": "无法解析该汉字，请重试。",
-        "results": {
-            "character": "汉字",
-            "pinyin": "拼音",
-            "meanings": "含义",
-            "strokes": "笔画数",
-            "radical": "部首",
-            "examples": "例子"
-        }
+        "error_message": "无法解析该汉字，请重试。"
     }
 }
