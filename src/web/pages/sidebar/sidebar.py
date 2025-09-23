@@ -1,56 +1,48 @@
 from gradio import Button, Markdown, Sidebar, Image
 from ...utils.i18n_utils import I18N
+from .config import _BUTTON_CONFIGS, _STATIC_FILE_MAPPING
 
 __all__ = ["sidebar"]
-
-_STATIC_FILE_MAPPING = {
-    "character": "src/web/static/icon/sidebar_character_icon.ico",
-    "pronunciation": "src/web/static/icon/sidebar_character_icon.ico",
-    "sidebar_header": "src/web/static/icon/sidebar_character_icon.ico",
-}
-
-# 定义按钮配置表
-_BUTTON_CONFIGS = [
-    {"key": "character_resolution", "icon": "character", "visible": True},
-    {"key": "vocabulary_comprehension", "icon": "pronunciation", "visible": False},
-    {"key": "grammar_learning", "icon": "pronunciation", "visible": False},
-    {"key": "sentence_correction", "icon": "pronunciation", "visible": False},
-]
 
 
 def sidebar(
     i18n: I18N,
 ):
     i18n.set_scope("sidebar")
-    with Sidebar(position="left", open=True) as sidebar:
-        Image(
+    with Sidebar(position="left", open=False) as sidebar:
+        components = {
+            "sidebar": sidebar,
+            "header_image": None,
+            "choose_function_md": None,
+            "separator_md_1": None,
+            "separator_md_2": None,
+            "dashboard": None,
+        }
+        components["sidebar"] = sidebar
+        components["header_image"] = Image(
             _STATIC_FILE_MAPPING["sidebar_header"],
             show_label=False,
             interactive=False,
             show_download_button=False,
             show_fullscreen_button=False,
         )
-        registered_components = {}
-        Markdown(f"## {i18n('choose_function')}")
-        Markdown("---")
-        registered_components["home_page"] = Button(
-            icon=_STATIC_FILE_MAPPING["pronunciation"],
-            value=i18n("home_page"),
+        components["choose_function_md"] = Markdown(f"## {i18n('choose_function')}")
+        components["separator_md_1"] = Markdown("---")
+        components["dashboard"] = Button(
+            value=i18n("dashboard"),
             size="lg",
             variant="primary",
         )
-        Markdown("---")
 
-        registered_components["sidebar"] = sidebar
+        components["separator_md_2"] = Markdown("---")
+
         for cfg in _BUTTON_CONFIGS:
-            btn = Button(
-                icon=_STATIC_FILE_MAPPING[cfg["icon"]],
+            components[cfg["key"]] = Button(
                 value=i18n(cfg["key"]),
-                size="md",
-                variant="secondary",
+                size=cfg["size"],
+                variant=cfg["variant"],
             )
-            registered_components[cfg["key"]] = btn
-    return registered_components
+    return components
 
 
 if __name__ == "__main__":

@@ -210,5 +210,9 @@ def get_character_response(
         return create_database_response(character, scenario, db_result)
 
     # Generate new response if not in database
-    llm_response = llm_character_response(character, scenario, stream, locale)
-    return create_llm_response(character, scenario, llm_response, stream)
+    llm_response = llm_character_response(
+        character=character, scenario=scenario, stream=stream, locale=locale
+    )
+    return create_llm_response(
+        character=character, scenario=scenario, llm_response=llm_response, stream=stream
+    )
