@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dotenv>=0.9.9",
-    "nicegui>=2.24.2",
+    "gradio>=5.47.0",
     "openai>=1.107.2",
 ]
 
