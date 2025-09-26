@@ -1,5 +1,5 @@
 from nicegui import app,ui
-from src.frontend.pages import dashboard
+from frontend.pages import dashboard
 
 
 app.include_router(dashboard.router)

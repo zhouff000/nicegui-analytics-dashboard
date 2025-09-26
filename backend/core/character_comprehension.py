@@ -8,7 +8,7 @@ from functools import lru_cache
 from ..database.sqlite import DatabaseManager
 import re
 from ..utils.paddle_ocr import call_ocr
-from .dataclass import (
+from ..dataclass.dataclass import (
     CharacterResponse,
     create_database_response,
     create_llm_response,
@@ -26,14 +26,16 @@ dotenv.load_dotenv(dotenv.find_dotenv(), override=True)
 _openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Configuration paths
-_PROJECT_CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"
+_PROJECT_CONFIG_DIR = Path(__file__).resolve().parents[0] / "config"
 _PROMPT_CONFIG_PATH = Path(
     os.getenv("PROMPT_TOML_PATH", _PROJECT_CONFIG_DIR / "prompt.toml")
 )
 _CHARACTER_CONFIG_PATH = Path(
     os.getenv("CC_CONFIG_TOML_PATH", _PROJECT_CONFIG_DIR / "config.toml")
 )
-_DB_FILE_PATH = Path(__file__).resolve().parents[3] / "sqlite3" / "main.db"
+_DB_FILE_PATH = Path(__file__).resolve().parents[2] / "sqlite3" / "main.db"
+
+print(f"Using CONFIG file at: {_PROJECT_CONFIG_DIR}")
 
 
 def _is_valid_image_path(path_str: str) -> bool:
