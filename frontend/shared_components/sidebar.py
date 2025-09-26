@@ -1,10 +1,14 @@
 from nicegui import ui
+from .config import MENU_ITEMS
 
 
 def sidebar():
-    with ui.left_drawer() as drawer:
-        ui.label("导航栏").classes("text-h6")
-        ui.link("首页", "/").classes("block my-2")
-        ui.link("关于", "/about").classes("block my-2")
-        ui.link("物品列表", "/items").classes("block my-2")
-    return drawer
+    with ui.left_drawer(
+        value=True,
+        bordered=True,
+        elevated=True,
+        top_corner=True,
+        bottom_corner=True,
+    ).props("width=250 bordered"):
+        for name, link in MENU_ITEMS:
+            ui.link(name, link).classes("block my-2")

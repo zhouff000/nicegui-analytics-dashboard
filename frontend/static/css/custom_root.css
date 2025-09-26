@@ -1,0 +1,24 @@
+/* styles/custom.css */
+:root {
+    --font-main: 'Inter', sans-serif, 'pingfang sc', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial;
+    --color-primary: #2563eb;
+    /* 蓝色 */
+    --color-secondary: #f97316;
+    /* 橙色 */
+}
+
+body {
+    font-family: var(--font-main);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}

@@ -35,7 +35,6 @@ _CHARACTER_CONFIG_PATH = Path(
 )
 _DB_FILE_PATH = Path(__file__).resolve().parents[2] / "sqlite3" / "main.db"
 
-print(f"Using CONFIG file at: {_PROJECT_CONFIG_DIR}")
 
 
 def _is_valid_image_path(path_str: str) -> bool:
