@@ -27,6 +27,7 @@
         "grammar_learning": "语法学习",
         "sentence_correction": "句子纠错",
         "conversation_practice": "汉语对话",
+        "quickstart": "快速开始",
         "dashboard": "仪表盘"
     },
     "sidebar": {
@@ -37,7 +38,7 @@
         "dashboard": "仪表盘",
         "grammar_learning": "语法学习",
         "sentence_correction": "句子纠错",
-        "home_page": "主页",
+        "homepage": "主页",
         "conversation_practice": "汉语对话",
         "function_switch": "功能切换"
     },

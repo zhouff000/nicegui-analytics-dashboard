@@ -1,15 +1,16 @@
 from nicegui import app, ui
-from frontend.pages import dashboard
+from frontend.pages import dashboard, character_resolution
+from frontend.utils.css import load_css
 
-with open("frontend/static/css/custom_root.css") as f:
-    css = f.read()
-ui.add_head_html(f"<style>{css}</style>")
+ui.add_head_html(load_css("frontend/static/css/app.css"))
 
 app.include_router(dashboard.router)
+app.include_router(character_resolution.router)
 
 ui.run(
     title="重庆师范大学对外汉语教育大模型 ",
     favicon="📚",
     dark=False,
     reload=True,
+    storage_secret="your_secret_key",
 )
