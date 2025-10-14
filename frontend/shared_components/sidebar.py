@@ -3,7 +3,6 @@ from .config import MENU_ITEMS
 
 
 def sidebar():
-    toggle_button = ui.button("切换侧边栏").classes("m-2")
     with ui.left_drawer(
         value=True,
         bordered=True,
@@ -13,10 +12,14 @@ def sidebar():
     ).props("width=250 bordered") as drawer:
         with ui.column().classes("w-full items-center"):
             for name, link in MENU_ITEMS:
-                ui.button(name).classes(
+                ui.link(name, link).classes(
+                    "justify-center"
                     "w-full px-4 py-3 my-1 rounded-lg "
                     "hover:bg-blue-100 hover:text-blue-600 "
                     "transition-colors duration-200 "
                     "text-gray-700"
                 )
-    toggle_button.on("click", lambda _: drawer.toggle())
+    with ui.header():
+        ui.button("≡", on_click=drawer.toggle())
+
+    # toggle_button.on("click", lambda _: drawer.toggle())

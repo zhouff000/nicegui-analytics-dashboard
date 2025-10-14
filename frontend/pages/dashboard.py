@@ -1,5 +1,5 @@
 from nicegui import APIRouter, ui
-# from ..shared_components.sidebar import sidebar
+from ..shared_components.sidebar import sidebar
 from ..utils.i18n import I18N
 
 router = APIRouter()
@@ -44,6 +44,7 @@ def action_card(icon: str, title: str, description: str, action_text: str = "开
 
 @router.page("/")
 def dashboard_page():
+    sidebar()
     with ui.column():
         ui.label(i18n("dashboard")).classes("ml-5 mt-6 text-h4 font-bold")
         ui.label(i18n("welcome_message")).classes(

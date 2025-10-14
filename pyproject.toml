@@ -1,7 +1,7 @@
 [project]
 name = "zh-llm"
 version = "0.1.0"
-description = "Add your description here"
+description = "CQNU Open Chinese Education LLM"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -20,4 +20,5 @@ dev = [
     "ipykernel>=6.30.1",
     "ipywidgets>=8.1.7",
     "pytest>=8.4.2",
+    "ruff>=0.14.0",
 ]
