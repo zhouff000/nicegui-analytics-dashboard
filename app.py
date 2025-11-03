@@ -13,5 +13,5 @@ if __name__ in {"__main__", "__mp_main__"}:
         favicon="📚",
         dark=False,
         reload=True,
-        storage_secret="sadfafa",
+        storage_secret="your_secret_key_here",
     )

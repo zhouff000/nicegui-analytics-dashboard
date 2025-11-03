@@ -1,7 +1,6 @@
 from nicegui import APIRouter, app, ui
-from ..shared_components.sidebar import sidebar
+from ..shared_components.navigation import navigation
 from ..utils.i18n import I18N
-from ..shared_components.header import header
 
 router = APIRouter()
 
@@ -45,8 +44,7 @@ def dashboard_page():
     i18n = I18N(default_lang=app.storage.user.get("language", "zh"))
     i18n.set_scope("dashboard")
 
-    header()
-    sidebar()
+    navigation()
     with ui.column():
         ui.label(i18n("dashboard")).classes("ml-5 mt-6 text-h4 font-bold")
         ui.label(i18n("welcome_message")).classes(
