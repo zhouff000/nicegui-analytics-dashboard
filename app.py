@@ -1,8 +1,5 @@
 from nicegui import app, ui
-from frontend.pages import dashboard,character_resolution
-from frontend.utils.css import load_css
-
-# ui.add_head_html(load_css("frontend/static/css/app.css"))
+from frontend.pages import dashboard, character_resolution
 
 app.include_router(dashboard.router)
 app.include_router(character_resolution.router)
