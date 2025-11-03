@@ -3,39 +3,54 @@ from .config import MENU_ITEMS
 
 
 def navigation():
-    """
-    统一的导航组件，整合了 header 和 sidebar 的功能
-    通过 drawer 和 header 提供一致的导航体验
-    """
-    # 创建侧边栏抽屉
-    with ui.left_drawer(
-        value=True,
-        bordered=True,
-        elevated=True,
-        top_corner=True,
-        bottom_corner=True,
-    ).props("width=250 bordered") as drawer:
-        with ui.column().classes("w-full items-center"):
-            # 渲染菜单项
-            for name, link in MENU_ITEMS:
-                ui.link(name, link).classes(
-                    "justify-center "
-                    "w-full px-4 py-3 my-1 rounded-lg "
-                    "hover:bg-blue-100 hover:text-blue-600 "
-                    "transition-colors duration-200 "
-                    "text-gray-700"
-                )
+    with (
+        ui.left_drawer(
+            value=True,
+            bordered=False,
+            elevated=False,
+            top_corner=True,
+            bottom_corner=True,
+        )
+        .props("width=260")
+        .classes("bg-gradient-to-b from-blue-50 to-blue-100") as drawer
+    ):
+        # 侧边栏标题区域
+        with ui.column().classes("w-full p-6 mb-4"):
+            ui.icon("school", size="xl").classes("text-blue-500 mb-2")
+            ui.label("教学资源采集").classes(
+                "text-xl font-bold text-blue-900 text-center"
+            )
+            ui.label("系统导航").classes("text-sm text-blue-600 text-center mt-1")
 
-    # 创建顶部导航栏
+        ui.separator().classes("bg-blue-200 opacity-50")
+
+        # 菜单项容器
+        with ui.column().classes("w-full px-4 py-6 gap-2"):
+            for name, link in MENU_ITEMS:
+                # 扁平圆角卡片式菜单项
+                with ui.link(target=link).classes("no-underline w-full"):
+                    with ui.row().classes(
+                        "items-center gap-3 px-5 py-4 rounded-2xl "
+                        "bg-white hover:bg-blue-500 "
+                        "shadow-sm hover:shadow-md "
+                        "transition-all duration-300 ease-in-out "
+                        "hover:scale-105 cursor-pointer "
+                        "border border-blue-100 hover:border-blue-500"
+                    ):
+                        ui.icon("arrow_forward_ios", size="sm").classes(
+                            "text-blue-400 group-hover:text-white"
+                        ).style("transition: all 0.3s")
+                        ui.label(name).classes(
+                            "text-gray-700 font-medium hover:text-white"
+                        ).style("transition: all 0.3s")
+
     with ui.header(elevated=True).classes("row items-center justify-between"):
-        # 左侧：抽屉切换按钮和标题
         with ui.row().classes("items-center gap-4"):
             ui.button("≡", on_click=drawer.toggle).classes("ml-2")
             ui.label("重庆师范大学对外汉语教育平台 - 教学资源采集系统").classes(
                 "text-h4"
             )
 
-        # 右侧：导航链接和用户菜单
         with ui.row().classes("mr-4 gap-1 items-center"):
             ui.link("首页", "/").classes(
                 "px-4 py-2 hover:bg-blue-500 rounded-xl text-lg no-underline text-white"
@@ -43,7 +58,6 @@ def navigation():
             ui.link("汉字解析", "/hanzi-resolution").classes(
                 "px-4 py-2 hover:bg-blue-500 rounded-xl text-lg no-underline text-white"
             )
-            # 用户菜单
             with ui.button(icon="menu").classes("ml-4"):
                 with ui.menu() as menu:
                     ui.button(
@@ -66,12 +80,9 @@ def navigation():
     return drawer
 
 
-# 保持向后兼容：提供独立的 header 和 sidebar 函数
 def header():
-    """向后兼容的 header 函数，建议使用 navigation() 替代"""
     pass
 
 
 def sidebar():
-    """向后兼容的 sidebar 函数，建议使用 navigation() 替代"""
     pass
