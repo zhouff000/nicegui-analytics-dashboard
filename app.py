@@ -1,6 +1,9 @@
 from nicegui import app, ui
-from frontend.pages import dashboard, character_resolution
+from frontend.pages import dashboard, character_resolution, login
+from frontend.shared_components.authmiddleware import AuthMiddleware
 
+app.add_middleware(AuthMiddleware)
+app.include_router(login.router)
 app.include_router(dashboard.router)
 app.include_router(character_resolution.router)
 
