@@ -1,11 +1,9 @@
-from nicegui import APIRouter, ui
+from nicegui import APIRouter, app, ui
 from ..shared_components.sidebar import sidebar
 from ..utils.i18n import I18N
+from ..shared_components.header import header
 
 router = APIRouter()
-
-i18n = I18N()
-i18n.set_scope("dashboard")
 
 CARD_BASE = (
     "flex-1 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 p-6"
@@ -44,6 +42,10 @@ def action_card(icon: str, title: str, description: str, action_text: str = "开
 
 @router.page("/")
 def dashboard_page():
+    i18n = I18N(default_lang=app.storage.user.get("language", "zh"))
+    i18n.set_scope("dashboard")
+
+    header()
     sidebar()
     with ui.column():
         ui.label(i18n("dashboard")).classes("ml-5 mt-6 text-h4 font-bold")

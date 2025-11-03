@@ -2,6 +2,13 @@ import json
 import os
 from functools import lru_cache
 
+SUPPORTED_LANGUAGES = {
+    "zh": "中文",
+    "en": "English",
+    "ja": "日本語",
+    "ko": "한국어",
+}
+
 
 class I18N:
     """
