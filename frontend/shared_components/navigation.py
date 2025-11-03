@@ -14,7 +14,6 @@ def navigation():
         .props("width=260")
         .classes("bg-gradient-to-b from-blue-50 to-blue-100") as drawer
     ):
-        # 侧边栏标题区域
         with ui.column().classes("w-full p-6 mb-4"):
             ui.icon("school", size="xl").classes("text-blue-500 mb-2")
             ui.label("教学资源采集").classes(
@@ -78,11 +77,3 @@ def navigation():
                     ui.menu_item("关闭", menu.close)
 
     return drawer
-
-
-def header():
-    pass
-
-
-def sidebar():
-    pass
