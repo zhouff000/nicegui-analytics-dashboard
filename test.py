@@ -2,8 +2,8 @@ import requests
 import json
 
 # --- 配置区 ---
-TEST_URL = "http://47.109.134.91:6001/api/v1/admin/dashboard/resolutions"
-YOUR_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YTMwMmRmMi0xMDM0LTQyOWUtYmYwZC0wZDc5YTE1YjJhYTQiLCJ1c2VyX2lkIjoiOGEzMDJkZjItMTAzNC00MjllLWJmMGQtMGQ3OWExNWIyYWE0IiwidXNlcm5hbWUiOiJzdXBlcl90ZXN0ZXIiLCJ1c2VyX3R5cGUiOiJkYXRhX2VudHJ5IiwiZXhwIjoxNzY5MDY1NDMyfQ.pGi1oFaRluPvqdAyPo_vBy-geYcVTsWYIt0VKKWG7Uk"
+TEST_URL = "http://47.109.134.91:6001/api/v1/admin/dashboard/activities"
+YOUR_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YTMwMmRmMi0xMDM0LTQyOWUtYmYwZC0wZDc5YTE1YjJhYTQiLCJ1c2VyX2lkIjoiOGEzMDJkZjItMTAzNC00MjllLWJmMGQtMGQ3OWExNWIyYWE0IiwidXNlcm5hbWUiOiJzdXBlcl90ZXN0ZXIiLCJ1c2VyX3R5cGUiOiJkYXRhX2VudHJ5IiwiZXhwIjoxNzY5Njk0NjI1fQ.qRNmuHSgAP8i5OPD1amFCCCr-j7SoDQk3ZTiBbIfGA4"
 
 def test_api_connection():
     print("--- 开始 API 连接测试 ---")

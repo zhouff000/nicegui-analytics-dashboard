@@ -1,1 +1,0 @@
-from backend_test.manager_api import fetch_resolutions_stats

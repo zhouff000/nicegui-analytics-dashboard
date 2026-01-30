@@ -175,7 +175,7 @@ MODE_SETTINGS = {
         'label': '解析记录',
         'view_all': '查看全部记录>',
         'sub_items': [
-            ('草稿', 'menu_book', 'draft'), 
+            ('草稿箱', 'menu_book', 'draft'), 
             ('待审核', 'translate', 'pending_review'), 
             ('已拒绝', 'short_text', 'rejected'), 
             ('已发布', 'segment', 'published')

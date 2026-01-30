@@ -8,14 +8,16 @@
     - 数据清洗（ETL）：统一处理空值兜底、时间格式化、ID 截断及状态码映射，确保前端展示的一致性。
 """
 
-import sys
-import os
 import logging
-from typing import List, Dict, Any, Union
-from constants import STATUS_MAP, STATUS_DISPLAY_MAP, LAYOUT_CONFIG
+from typing import List, Dict, Any
+from app.config.constants import STATUS_MAP, STATUS_DISPLAY_MAP, LAYOUT_CONFIG
 
-# 路径挂载：确保可以跨目录引用 backend_test 等模块
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# --- 修改这里：导入你真正的 API 函数 ---
+try:
+    from .backend_api import fetch_resolutions_stats, fetch_resolutions_list
+    logging.info("成功连接到后端 API 模块")
+except ImportError:
+    logging.warning("未找到后端 API 模块，启用 Mock 降级数据")
 
 try:
     # 尝试从业务后端模块导入 API 函数
@@ -31,8 +33,7 @@ except ImportError:
         ]
         return [d for d in mock_data if d['name'] in status] if status else mock_data
         
-    def fetch_resolutions_list(skip=0, limit=15, status=None):
-        return {"items": [], "total": 0}
+
 
 def get_status_statistics(status: str = None) -> List[Dict[str, Any]]:
     """
@@ -66,22 +67,19 @@ def _format_data_item(item: Dict[str, Any]) -> Dict[str, Any]:
     出参：清洗后的字典，包含 id, word, pinyin, status 等前端字段。
     """
     raw_status = item.get('status')
+    # 确保 pinyin_data 始终是字典
     pinyin_data = item.get('pronunciation') or {}
+    if not isinstance(pinyin_data, dict): pinyin_data = {} 
     
     return {
-        'id': item.get('id'),
+        'id': item.get('id') or item.get('_id', '-'),
         'word': item.get('word', '-'),
         'pinyin': pinyin_data.get('pinyin', '-'),
-        # 状态映射逻辑：根据后端返回的 Code 查找显示名称，若无对应项则默认为“待审核”
         'status': STATUS_DISPLAY_MAP.get(raw_status, '待审核'),
-        # 安全脱敏处理：ID 类字段仅保留前 8 位显示
-        'creator_id': str(item.get('creator_id', 'system'))[:8],
-        'reviewer_id': str(item.get('reviewer_id', '-'))[:8],
-        # 复杂逻辑（时间处理）：将 ISO 格式中的 'T' 替换为空格，并截取到分钟级别
+        # 增加空值判断再截取
+        'creator_id': str(item.get('creator_id'))[:8] if item.get('creator_id') else 'system',
         'created_at': (item.get('created_at') or '').replace('T', ' ')[:16],
-        'reviewed_at': (item.get('reviewed_at') or '').replace('T', ' ')[:16] if item.get('reviewed_at') else '-',
-        # 业务逻辑映射：对默认生成的 "string" 或空评论进行“无”字过滤显示
-        'review_comment': item.get('review_comment') if item.get('review_comment') not in ["string", None] else "无"
+        'review_comment': item.get('review_comment') if item.get('review_comment') not in ["string", None, ""] else "无"
     }
 
 def get_cleaned_data(page: int = 1, status: str = None) -> Dict[str, Any]:
@@ -104,14 +102,16 @@ def get_cleaned_data(page: int = 1, status: str = None) -> Dict[str, Any]:
     try:
         # 2. 调用后端异步/线程安全接口
         raw = fetch_resolutions_list(skip=skip, limit=page_size, status=backend_status)
-        
-        # 3. 结果标准化：处理 API 可能返回 List (仅数据) 或 Dict (带 Total) 的差异情况
+       # ✅ 增加更多兼容性判断
         if isinstance(raw, list):
             items = raw
             total = len(raw)
+        elif isinstance(raw, dict):
+            # 尝试所有可能的键名：items, data, 或直接是列表
+            items = raw.get('items') or raw.get('data') or []
+            total = raw.get('total') or len(items)
         else:
-            items = raw.get('items', [])
-            total = raw.get('total', 0)
+            items, total = [], 0
         
         # 4. 批量数据清洗：应用标准化格式化函数
         processed = [_format_data_item(item) for item in items]

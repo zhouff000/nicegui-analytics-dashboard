@@ -9,8 +9,7 @@ from urllib3.util.retry import Retry
 # --- 基础配置与常量 ---
 # 确保 API_BASE 路径完整，指向具体的 resolutions 资源
 API_BASE: Final[str] = "http://47.109.134.91:6001/api/v1/admin/dashboard/resolutions"
-TOKEN: Final[str] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YTMwMmRmMi0xMDM0LTQyOWUtYmYwZC0wZDc5YTE1YjJhYTQiLCJ1c2VyX2lkIjoiOGEzMDJkZjItMTAzNC00MjllLWJmMGQtMGQ3OWExNWIyYWE0IiwidXNlcm5hbWUiOiJzdXBlcl90ZXN0ZXIiLCJ1c2VyX3R5cGUiOiJkYXRhX2VudHJ5IiwiZXhwIjoxNzY5MDY1NDMyfQ.pGi1oFaRluPvqdAyPo_vBy-geYcVTsWYIt0VKKWG7Uk"
-
+TOKEN: Final[str] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YTMwMmRmMi0xMDM0LTQyOWUtYmYwZC0wZDc5YTE1YjJhYTQiLCJ1c2VyX2lkIjoiOGEzMDJkZjItMTAzNC00MjllLWJmMGQtMGQ3OWExNWIyYWE0IiwidXNlcm5hbWUiOiJzdXBlcl90ZXN0ZXIiLCJ1c2VyX3R5cGUiOiJkYXRhX2VudHJ5IiwiZXhwIjoxNzY5Njk0NjI1fQ.qRNmuHSgAP8i5OPD1amFCCCr-j7SoDQk3ZTiBbIfGA4"
 # 配置结构化日志，方便在终端查看详细运行状态
 logging.basicConfig(
     level=logging.INFO, 
@@ -143,7 +142,20 @@ def fetch_resolutions_stats() -> List[Dict[str, Any]]:
     except Exception:
         logger.exception("fetch_resolutions_stats 执行过程中发生致命错误")
         return [{'name': '系统异常', 'value': 0}]
-
+def fetch_resolutions_list(skip: int = 0, limit: int = 15, status: str = None):
+    """获取分页列表数据"""
+    with create_http_session() as http_session:
+        try:
+            params = {'skip': skip, 'limit': limit}
+            if status:
+                params['status'] = status
+            
+            response = http_session.get(API_BASE, params=params, timeout=10)
+            response.raise_for_status()
+            return response.json()  # 返回后端原始 JSON
+        except Exception as e:
+            logger.error(f"列表抓取失败: {e}")
+            return {"items": [], "total": 0}
 # --- 测试运行入口 ---
 # if __name__ == "__main__":
 #     print("--- 正在执行后端 API 统计测试 ---")
